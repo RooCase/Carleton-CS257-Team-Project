@@ -10,5 +10,11 @@ python3 schools.py -l "what to list (School districts, grades)"
 
 Function
 
+data_school_name(school_name):
+
+request_school_by_type(grade):      //Grade is an int
+
+list_districts():
+
 
 
