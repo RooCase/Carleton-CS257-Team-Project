@@ -1,0 +1,14 @@
+Data that users could input:
+- School Name
+- school district name
+- request list
+
+CLI:
+python3 schools.py -n "School Name"
+python3 example.py -sd "School District Name"
+python3 schools.py -l "what to list (School districts, grades)"
+
+Function
+
+
+
