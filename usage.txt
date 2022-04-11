@@ -8,7 +8,7 @@ python3 schools.py -n "School Name"
 python3 example.py -sd "School District Name"
 python3 schools.py -l "what to list (School districts, grades)"
 
-Function
+Function signatures:
 
 data_school_name(school_name):
 
