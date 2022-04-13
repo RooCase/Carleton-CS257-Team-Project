@@ -13,9 +13,9 @@ class School:
         self.name = name
         self.type = type
         self.size = size
-        self.k5 = k5
-        self.k8 = k8
-        self.k12 = k12
+        self.gradesK_5 = k5
+        self.grades6_8 = k8
+        self.grades9_12 = k12
 
     #printing out the information about the school
     def get_school_info(self, name):
