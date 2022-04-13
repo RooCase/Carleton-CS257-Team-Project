@@ -8,7 +8,7 @@ class District:
         info = f'District name: {self.name}\nEnrollment for this district: {self.enrollment}\nList of schools:\n'
         
         for school in self.school_list:
-            info += f'  {school}\n'
+            info += f'  {school.name}\n'
             
         return info
 
