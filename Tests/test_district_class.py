@@ -11,8 +11,8 @@ class TestDistrict(unittest.TestCase):
     def test_get_district_info(self):
         sampleDistrict = district.District("DummyDistrict", 69, ["DummySchool"])
         retrievedDistrictData = sampleDistrict.get_district_data()
-        actualSchoolData = "District name: DummyDistrict\nEnrollment for this district: 69\nList of schools:\n  DummySchool\n"
-        self.assertEqual(retrievedDistrictData, actualSchoolData) 
+        actualDistrictData = "District name: DummyDistrict\nEnrollment for this district: 69\nList of schools:\n  DummySchool\n"
+        self.assertEqual(retrievedDistrictData, actualDistrictData) 
 
 if __name__ == '__main__':
     unittest.main()
