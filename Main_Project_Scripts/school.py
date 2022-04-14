@@ -1,29 +1,35 @@
 # file for parsing the rows from the dataset as School objects and doing operations with them
-
-dummy_school = "Yes,Academia Cesar Chavez Charter School,Regular school,Academia Cesar Chavez Charter Schools,518," \
-               "8/30/20,9/4/20,Closed,,,K: No Data Available; Gr1: No Data Available; Gr2: No Data Available; Gr3: No " \
-               "Data Available; Gr4: No Data Available; Gr5: No Data Available,Gr6: No Data Available; Gr7: No Data " \
-               "Available; Gr8: No Data Available,Gr9: NA; Gr10: NA; Gr11: NA; Gr12: NA,,,55 "
-
 # class for School objects
 class School:
-    def __init__(self, charter, district, name, type, size, k5, k8, k12):
+    def __init__(self, charter, district, name, size, grades):
         self.charter = charter
         self.district = district
         self.name = name
-        self.type = type
         self.size = size
-        self.gradesK_5 = k5
-        self.grades6_8 = k8
-        self.grades9_12 = k12
+        self.grades = grades
 
-    #printing out the information about the school
-    def get_school_info(self, name):
-        #add a fancy function to show the possible grades here
+    # creates a list of available grades in this school
+    def get_available_grades(self):
+        # instance variable for available grades
+        available = []
+        for i in self.grades:
+            if self.grades[i]:
+                available.append(i)
+        return available
 
+    # returns a district of a specific school
+    def get_district(self):
+        return self.district
+
+    # printing out the information about the school
+    def get_school_info(self):
+        # showing possible grades
+        grds = ", ".join([str(x) for x in self.get_available_grades()])
+        # printing out the school information
         info = f"""
-        School name: {name}
-        This is a {type} school with a student body of {size} students.
-        It is located in {district}.
+        School name: {self.name}
+        This is a {self.charter} school with a student body of {self.size} students.
+        It is located in {self.district}.
+        Those grades are available: {grds} 
         """
         return info
