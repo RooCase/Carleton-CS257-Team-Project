@@ -26,10 +26,17 @@ class School:
         # showing possible grades
         grds = ", ".join([str(x) for x in self.get_available_grades()])
         # printing out the school information
-        info = f"""
-        School name: {self.name}
-        This is a {self.charter} school with a student body of {self.size} students.
-        It is located in {self.district}.
-        Those grades are available: {grds} 
-        """
+        if self.charter == "Charter":
+            info = f"""
+            School name: {self.name}
+            This is a {self.charter} school with a student body of {self.size} students.
+            Those grades are available: {grds} 
+            """
+        else:
+            info = f"""
+            School name: {self.name}
+            This is a {self.charter} school with a student body of {self.size} students.
+            It is located in {self.district}.
+            Those grades are available: {grds} 
+            """
         return info
