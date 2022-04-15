@@ -7,14 +7,6 @@ class WeeklyModeTracker:
     def get_weeks_for_grade(self, grade):
         return self.learning_modes_for_grades[grade]
 
-    # creates a list of available grades in the school/district
-    def get_available_grades(self):
-        # instance variable for available grades
-        available = []
-        for i in self.grades:
-            if self.grades[i]:
-                available.append(i)
-        return available
 
     def __init__(self, name, size, grades):
         self.name = name
