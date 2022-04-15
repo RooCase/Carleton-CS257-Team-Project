@@ -22,23 +22,23 @@ Yes,Academia Cesar Chavez Charter School,Regular school,Academia Cesar Chavez Ch
             f.close()
 
         resultData = csvManipulation.findLines("example.csv")
-        print(resultData)
-        print(exampleListForm)
+
         self.assertEqual(resultData, exampleListForm)
 
     def testSchoolObjectCreation(self):
         # TODO: finish what the final script should look like for test cases
-        exampleLine = ['Yes', 'Academia Cesar Chavez Charter School', 'Regular school', 'Academia Cesar Chavez Charter Schools', '518', '8/30/20', '9/4/20', 'Closed', '', '', 'K: No Data Available; Gr1: No Data Available; Gr2: No Data Available; Gr3: No Data Available; Gr4: No Data Available; Gr5: No Data Available', 'Gr6: No Data Available; Gr7: No Data Available; Gr8: No Data Available', 'Gr9: NA; Gr10: NA; Gr11: NA; Gr12: NA', '', '', '55']
+        exampleLine = csvManipulation.findLines("example.csv")
         exampleSchool = csvManipulation.createSchool(exampleLine)
 
         sampleReturnedInfo = exampleSchool.get_school_info()
         supposedReturned = f"""
         School name: Academia Cesar Chavez Charter School
-        This is a Charter school with a student body of 518 students.
-        It is located in Charter Agency.
-        Those grades are available:
+        This is a charter school with a student body of 518 students.
+        It is located in Academia Cesar Chavez Charter Schools.
+        Those grades are available: K, Gr1, Gr2, Gr3, Gr4, Gr5, Gr6, Gr7, Gr8 
         """
-        self.assertEqual(sampleReturnedInfo)
+
+        self.assertEqual(sampleReturnedInfo, supposedReturned)
 
     def testSchoolDistrictObjectCreation(self):
         # TODO: write this.

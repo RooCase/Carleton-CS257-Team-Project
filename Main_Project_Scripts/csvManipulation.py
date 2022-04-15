@@ -16,42 +16,54 @@ def findLines(file):
 def createSchool(lines):
     # TODO: Test this function
     #Creates a school from a set of lines
-    if lines[0][0] == "Yes":
-        charter = True
-    else:
-        charter = False
+    charter = isCharter(lines[0])
     grades = removeNAGradesAndCombineAllGrades(lines)
 
     initSchool = School(charter, lines[0][3], lines[0][1], lines[0][4], fillGrades(grades))
     return initSchool
 
+def isCharter(line):
+    if line[0] == "Yes":
+        return "charter"
+    else:
+        return "not charter"
+
+
 def removeNAGradesAndCombineAllGrades(lines):
     #Creates a list of grades, which eacb index takes the form "Grade: Value"
     #TODO: Test this function
-
+    returnLines = []
     for line in lines:
-        grades = [line[11].split(";"), line[12].split(";"), line[13].split(";")]
-        for individualGrade in grades:
-            if "NA" in individualGrade:
-                grades.remove(individualGrade)
+        grades = (line[10] + ";" + line[11] + ";" + line[12]).split(";")
+        i = 0
+        while i < len(grades):
+            if "NA" in grades[i]:
+                grades.remove(grades[i])
+            else:
+                i += 1
+        returnLines.append(grades)
 
-    return grades
+    return returnLines
 
 def fillGrades(lines):
-    #TODO: finish this.
     gradeDictionary = {
-        0: [],
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: [],
-        6: [],
-        7: [],
-        8: [],
-        9: [],
-        10: [],
-        11: [],
-        12: [],
+        "K": [],
+        "Gr1": [],
+        "Gr2": [],
+        "Gr3": [],
+        "Gr4": [],
+        "Gr5": [],
+        "Gr6": [],
+        "Gr7": [],
+        "Gr8": [],
+        "Gr9": [],
+        "Gr10": [],
+        "Gr11": [],
+        "Gr12": [],
     }
+
+    for line in lines:
+        for cell in line:
+            splits = cell.strip(" ").split(":")
+            gradeDictionary[splits[0]].append(splits[1])
     return gradeDictionary
