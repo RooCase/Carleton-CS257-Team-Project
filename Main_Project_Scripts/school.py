@@ -16,6 +16,15 @@ class School(weekly_mode_tracker.WeeklyModeTracker):
     def get_district(self):
         return self.district
 
+    # creates a list of available grades in the school/
+    def get_available_grades(self):
+        # instance variable for available grades
+        available = []
+        for i in self.grades:
+            if self.grades[i]:
+                available.append(i)
+        return available
+
     # printing out the information about the school
     def get_school_info(self):
         # showing possible grades
