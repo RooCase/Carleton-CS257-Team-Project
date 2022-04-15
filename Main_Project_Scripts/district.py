@@ -1,4 +1,6 @@
-class District:
+import weekly_mode_tracker
+
+class District(weekly_mode_tracker.WeeklyModeTracker):
     def __init__(self, name, enrollment, school_list):
         self.name = name
         self.enrollment = enrollment
