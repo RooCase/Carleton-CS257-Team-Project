@@ -12,6 +12,22 @@ def findLines(file):
             lines.append(row)
     return lines[1:]
 
+def findSchoolLines(lines):
+    #TODO: SO MUCH TESTING ON THIS. SO MUCH TESTING.
+    dataset = []
+    firstReaderIndex = 0
+    secondReaderIndex = 1
+
+    while firstReaderIndex < len(lines):
+        while secondReaderIndex < len(lines) and (lines[firstReaderIndex][1] == lines[secondReaderIndex][1]):
+            secondReaderIndex += 1
+        dataset.append(lines[firstReaderIndex:secondReaderIndex])
+        firstReaderIndex = secondReaderIndex
+        secondReaderIndex += 1
+
+    return dataset
+
+
 
 def createSchool(lines):
     # TODO: Test this function
