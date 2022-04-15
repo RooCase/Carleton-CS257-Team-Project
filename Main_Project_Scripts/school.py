@@ -1,6 +1,9 @@
 # file for parsing the rows from the dataset as School objects and doing operations with them
 # class for School objects
-class School:
+from Main_Project_Scripts import weekly_mode_tracker
+
+
+class School(weekly_mode_tracker.WeeklyModeTracker):
     def __init__(self, charter, district, name, size, grades):
         self.charter = charter
         self.district = district
@@ -8,7 +11,12 @@ class School:
         self.size = size
         self.grades = grades
 
-    # creates a list of available grades in this school
+
+    # returns a district of a specific school
+    def get_district(self):
+        return self.district
+
+    # creates a list of available grades in the school/
     def get_available_grades(self):
         # instance variable for available grades
         available = []
@@ -16,10 +24,6 @@ class School:
             if self.grades[i]:
                 available.append(i)
         return available
-
-    # returns a district of a specific school
-    def get_district(self):
-        return self.district
 
     # printing out the information about the school
     def get_school_info(self):
