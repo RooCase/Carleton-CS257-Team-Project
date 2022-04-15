@@ -12,8 +12,9 @@ def findLines(file):
             lines.append(row)
     return lines[1:]
 
+
 def findSchoolLines(lines):
-    #TODO: SO MUCH TESTING ON THIS. SO MUCH TESTING.
+    # TODO: SO MUCH TESTING ON THIS. SO MUCH TESTING.
     dataset = []
     firstReaderIndex = 0
     secondReaderIndex = 1
@@ -28,15 +29,15 @@ def findSchoolLines(lines):
     return dataset
 
 
-
 def createSchool(lines):
     # TODO: Test this function
-    #Creates a school from a set of lines
+    # Creates a school from a set of lines
     charter = isCharter(lines[0])
     grades = removeNAGradesAndCombineAllGrades(lines)
 
     initSchool = School(charter, lines[0][3], lines[0][1], lines[0][4], fillGrades(grades))
     return initSchool
+
 
 def isCharter(line):
     if line[0] == "Yes":
@@ -46,8 +47,8 @@ def isCharter(line):
 
 
 def removeNAGradesAndCombineAllGrades(lines):
-    #Creates a list of grades, which eacb index takes the form "Grade: Value"
-    #TODO: Test this function
+    # Creates a list of grades, which each index takes the form "Grade: Value"
+    # TODO: Test this function
     returnLines = []
     for line in lines:
         grades = (line[10] + ";" + line[11] + ";" + line[12]).split(";")
@@ -60,6 +61,7 @@ def removeNAGradesAndCombineAllGrades(lines):
         returnLines.append(grades)
 
     return returnLines
+
 
 def fillGrades(lines):
     gradeDictionary = {
