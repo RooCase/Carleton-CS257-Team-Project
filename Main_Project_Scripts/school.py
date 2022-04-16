@@ -11,7 +11,6 @@ class School(weekly_mode_tracker.WeeklyModeTracker):
         self.size = size
         self.grades = grades
 
-
     # returns a district of a specific school
     def get_district(self):
         return self.district
