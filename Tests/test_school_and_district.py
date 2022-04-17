@@ -1,5 +1,5 @@
-from Main_Project_Scripts.district import *
-from Main_Project_Scripts.school import *
+from Main_Project_Scripts.district import District
+from Main_Project_Scripts.school import School
 from Main_Project_Scripts.Listing_Schools_in_a_District import *
 
 #Test schools
@@ -21,5 +21,8 @@ District_C = District("District_C", [])
 
 schoolsList = [school1, school2, school3, school4, school5, school6, school7, school8, school9, school0]
 
+#testing schools in district
 print(f"The schools in {District_A.name} are {listSchools(schoolsList, District_A)}.")
+
+#testing other schools in a particular school's district.
 print (listOtherSchools(schoolsList, school7))
