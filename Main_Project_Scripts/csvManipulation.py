@@ -57,7 +57,7 @@ def listSchoolsInDistrict():
     return None
 
 def isCharter(line):
-    if line[0] == "Yes":
+    if "Yes" in line[0]:
         return "charter"
     else:
         return "not charter"
@@ -68,14 +68,15 @@ def removeNAGradesAndCombineAllGrades(lines, lowerBoundInclusive):
     # TODO: Test this function
     returnLines = []
     for line in lines:
-        grades = (line[lowerBoundInclusive] + ";" + line[lowerBoundInclusive+1] + ";" + line[lowerBoundInclusive+2]).split(";")
-        i = 0
-        while i < len(grades):
-            if "NA" in grades[i]:
-                grades.remove(grades[i])
-            else:
-                i += 1
-        returnLines.append(grades)
+        if(len(line) > 12):
+            grades = (line[lowerBoundInclusive] + ";" + line[lowerBoundInclusive+1] + ";" + line[lowerBoundInclusive+2]).split(";")
+            i = 0
+            while i < len(grades):
+                if "NA" in grades[i]:
+                    grades.remove(grades[i])
+                else:
+                    i += 1
+            returnLines.append(grades)
 
     return returnLines
 
