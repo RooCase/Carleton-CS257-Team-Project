@@ -1,5 +1,6 @@
-from Main_Project_Scripts.district import District
-from Main_Project_Scripts.school import School
+#Rowen Hinrichs
+from Main_Project_Scripts.district import *
+from Main_Project_Scripts.school import *
 
 #Dummy schools
 school1 = School("sus", 'a')
@@ -18,7 +19,7 @@ sus = District("sus", [])
 amogus = District("amogus", [])
 balls = District("balls", [])
 
-#Rowen Hinrichs
+
 #Listing Schools in a District
 #Schools have districts, districts do not have schools
 #given a district, list all the schools
@@ -26,17 +27,6 @@ balls = District("balls", [])
 #district objects will have an empty school list in them, that I then populate
 # this is basically the function code and a test put together. I'll make sure to seperate it later.
 
-
-#classes for testing
-# class schools:
-#     def __init__(self, district, name):
-#         self.name = name
-#         self.district = district
-
-# class district:
-#     def __init__(self, name, schools):
-#         self.name = name
-#         self.schools = schools
 
 schoolsList = [school1, school2, school3, school4, school5, school6, school7, school8, school9, school0]
 
@@ -48,29 +38,24 @@ districtList = [sus, amogus, balls]
 #output an array of schools that are in each district.
 #have district object contain list of schools
 
-#itterate through list ofschool
-#looks at district
-#find district in list/dictionary of districts
-
 #Lists schools in a district, given a list of all schools and a district
-#I don't think it needs to return anything, because it's only editing an object that already exists.
 def listSchools(schoolsList, District):
+    listOfSchoolsInDistrict = []
     for school in schoolsList:
         if school.district == District.name:
-            District.schools.append(school.name)
+            listOfSchoolsInDistrict.append(school)
+    return listOfSchoolsInDistrict
     
-
+#List all the other schools in a particular school's district, given a school.
 def listOtherSchools(schoolList, school):
     district = school.district
-    listSchools(schoolList, district)
-    listOfOtherSchools = district.school_list.copy()
+    listOfOtherSchools = listSchools(schoolList, district)
     for i in listOfOtherSchools:
             if i == school:
                 listOfOtherSchools.remove(i)
     return listOfOtherSchools
 
 
-listSchools(schoolsList, amogus)
-print(f"The schools in {amogus.name} are {amogus.schools}.")
+print(f"The schools in {amogus.name} are {listSchools(schoolsList, amogus)}.")
 print (listOtherSchools(schoolsList, school7))
 
