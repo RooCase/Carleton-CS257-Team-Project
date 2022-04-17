@@ -1,7 +1,7 @@
-import weekly_mode_tracker
+from Main_Project_Scripts.weekly_mode_tracker import WeeklyModeTracker
 
 
-class District(weekly_mode_tracker.WeeklyModeTracker):
+class District(WeeklyModeTracker):
     def __init__(self, name, enrollment, school_list, grades):
         self.name = name
         self.size = enrollment
@@ -9,7 +9,7 @@ class District(weekly_mode_tracker.WeeklyModeTracker):
         self.learning_modes_for_grades = grades
 
     def get_district_data(self):
-        info = f'District name: {self.name}\nEnrollment for this district: {self.enrollment}\nList of schools:\n'
+        info = f'District name: {self.name}\nEnrollment for this district: {self.size}\nList of schools:\n'
 
         for school in self.school_list:
             info += f'  {school.name}\n'

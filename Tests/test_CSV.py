@@ -1,6 +1,7 @@
 import unittest, csv
 
 from Main_Project_Scripts import csvManipulation
+from Main_Project_Scripts.csvManipulation import findIndividualGroups, createDistrict
 from Main_Project_Scripts.school import School
 
 
@@ -16,12 +17,7 @@ Yes,Academia Cesar Chavez Charter School,Regular school,Academia Cesar Chavez Ch
 Yes,Academia Cesar Chavez Charter School,Regular school,Academia Cesar Chavez Charter Schools,518,9/5/20,9/11/20,Virtual,Virtual,Virtual,K: AllDistance; Gr1: AllDistance; Gr2: AllDistance; Gr3: AllDistance; Gr4: AllDistance; Gr5: AllDistance,Gr6: AllDistance; Gr7: AllDistance; Gr8: AllDistance,Gr9: NA; Gr10: NA; Gr11: NA; Gr12: NA,,,55
 Yes,Academia Cesar Chavez Charter School,Regular school,Academia Cesar Chavez Charter Schools,518,9/12/20,9/19/20,Virtual,Virtual,Virtual,K: AllDistance; Gr1: AllDistance; Gr2: AllDistance; Gr3: AllDistance; Gr4: AllDistance; Gr5: AllDistance,Gr6: AllDistance; Gr7: AllDistance; Gr8: AllDistance,Gr9: NA; Gr10: NA; Gr11: NA; Gr12: NA,,,55
 """
-
-        with open("example.csv", 'w') as f:
-            f.write(exampleString)
-            f.close()
-
-        resultData = csvManipulation.findLines("example.csv")
+        resultData = self.writeAndRead(exampleString)
 
         self.assertEqual(resultData, exampleListForm)
 
@@ -41,8 +37,32 @@ Yes,Academia Cesar Chavez Charter School,Regular school,Academia Cesar Chavez Ch
         self.assertEqual(sampleReturnedInfo, supposedReturned)
 
     def testSchoolDistrictObjectCreation(self):
-        # TODO: write this.
-        return
+        sampleData = """Achieve Language Academy,Charter agency,413,Weekly,5/15/21,5/21/21,In-person,In-person,In-person,,In-Person,K: AllInPerson; Gr1: AllInPerson; Gr2: AllInPerson; Gr3: AllInPerson; Gr4: AllInPerson; Gr5: AllInPerson,Gr6: AllInPerson; Gr7: AllInPerson; Gr8: AllInPerson,Gr9: No Data Available; Gr10: No Data Available; Gr11: No Data Available; Gr12: No Data Available,,,
+Achieve Language Academy,Charter agency,413,Weekly,5/22/21,5/28/21,In-person,In-person,In-person,,In-Person,K: AllInPerson; Gr1: AllInPerson; Gr2: AllInPerson; Gr3: AllInPerson; Gr4: AllInPerson; Gr5: AllInPerson,Gr6: AllInPerson; Gr7: AllInPerson; Gr8: AllInPerson,Gr9: No Data Available; Gr10: No Data Available; Gr11: No Data Available; Gr12: No Data Available,,,
+Achieve Language Academy,Charter agency,413,Weekly,5/29/21,6/4/21,In-person,In-person,In-person,,In-Person,K: AllInPerson; Gr1: AllInPerson; Gr2: AllInPerson; Gr3: AllInPerson; Gr4: AllInPerson; Gr5: AllInPerson,Gr6: AllInPerson; Gr7: AllInPerson; Gr8: AllInPerson,Gr9: No Data Available; Gr10: No Data Available; Gr11: No Data Available; Gr12: No Data Available,,,
+Ada-Borup Public School District,Regular local school district,578,Weekly,9/1/20,9/8/20,,,,,,K: No Data Available; Gr1: No Data Available; Gr2: No Data Available; Gr3: No Data Available; Gr4: No Data Available; Gr5: No Data Available,Gr6: No Data Available; Gr7: No Data Available; Gr8: No Data Available,Gr9: No Data Available; Gr10: No Data Available; Gr11: No Data Available; Gr12: No Data Available,,,
+Ada-Borup Public School District,Regular local school district,578,Weekly,9/9/20,9/11/20,In-person,In-person,In-person,In-person,In-Person,K: AllInPerson; Gr1: AllInPerson; Gr2: AllInPerson; Gr3: AllInPerson; Gr4: AllInPerson; Gr5: AllInPerson,Gr6: AllInPerson; Gr7: AllInPerson; Gr8: AllInPerson,Gr9: AllInPerson; Gr10: AllInPerson; Gr11: AllInPerson; Gr12: AllInPerson,,,
+Ada-Borup Public School District,Regular local school district,578,Weekly,9/12/20,9/18/20,In-person,In-person,In-person,In-person,In-Person,K: AllInPerson; Gr1: AllInPerson; Gr2: AllInPerson; Gr3: AllInPerson; Gr4: AllInPerson; Gr5: AllInPerson,Gr6: AllInPerson; Gr7: AllInPerson; Gr8: AllInPerson,Gr9: AllInPerson; Gr10: AllInPerson; Gr11: AllInPerson; Gr12: AllInPerson,,,
+"""
+        parsed = self.writeAndRead(sampleData)
+        districtLines = findIndividualGroups(parsed)
+        districts = []
+        for districtSection in districtLines:
+            district = createDistrict(districtSection)
+            if district != None:
+                districts.append(district)
+
+        for district in districts:
+            print(district.get_district_data())
+
+
+
+    def writeAndRead(self, exampleString):
+        with open("example.csv", 'w') as f:
+            f.write(exampleString)
+            f.close()
+
+        return csvManipulation.findLines("example.csv")
 
 
 if __name__ == '__main__':

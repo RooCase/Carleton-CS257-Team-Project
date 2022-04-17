@@ -1,5 +1,5 @@
 import csv
-
+from Main_Project_Scripts.district import District
 from Main_Project_Scripts.school import School
 
 
@@ -13,14 +13,20 @@ def findLines(file):
     return lines[1:]
 
 
-def findSchoolLines(lines):
+def findIndividualGroups(lines):
     # TODO: SO MUCH TESTING ON THIS. SO MUCH TESTING.
     dataset = []
     firstReaderIndex = 0
     secondReaderIndex = 1
 
+    if(lines[0] == "Yes" or lines[0] == "No"):
+        nameLocation = 1
+    else:
+        nameLocation = 0
+
     while firstReaderIndex < len(lines):
-        while secondReaderIndex < len(lines) and (lines[firstReaderIndex][1] == lines[secondReaderIndex][1]):
+        while secondReaderIndex < len(lines) and \
+                (lines[firstReaderIndex][nameLocation] == lines[secondReaderIndex][nameLocation]):
             secondReaderIndex += 1
         dataset.append(lines[firstReaderIndex:secondReaderIndex])
         firstReaderIndex = secondReaderIndex
@@ -33,11 +39,22 @@ def createSchool(lines):
     # TODO: Test this function
     # Creates a school from a set of lines
     charter = isCharter(lines[0])
-    grades = removeNAGradesAndCombineAllGrades(lines)
+    grades = removeNAGradesAndCombineAllGrades(lines, 10)
 
     initSchool = School(charter, lines[0][3], lines[0][1], lines[0][4], fillGrades(grades))
     return initSchool
 
+
+def createDistrict(lines):
+    if lines[0][1] != "Charter agency":
+        grades = removeNAGradesAndCombineAllGrades(lines, 11)
+        initDistrict = District(lines[0][0], lines[0][2], [], fillGrades(grades))
+        return initDistrict
+    else:
+        return None
+
+def listSchoolsInDistrict():
+    return None
 
 def isCharter(line):
     if line[0] == "Yes":
@@ -46,12 +63,12 @@ def isCharter(line):
         return "not charter"
 
 
-def removeNAGradesAndCombineAllGrades(lines):
+def removeNAGradesAndCombineAllGrades(lines, lowerBoundInclusive):
     # Creates a list of grades, which each index takes the form "Grade: Value"
     # TODO: Test this function
     returnLines = []
     for line in lines:
-        grades = (line[10] + ";" + line[11] + ";" + line[12]).split(";")
+        grades = (line[lowerBoundInclusive] + ";" + line[lowerBoundInclusive+1] + ";" + line[lowerBoundInclusive+2]).split(";")
         i = 0
         while i < len(grades):
             if "NA" in grades[i]:
