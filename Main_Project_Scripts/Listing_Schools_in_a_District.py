@@ -1,17 +1,17 @@
-import school
-import district
+from Main_Project_Scripts.school import School
+from Main_Project_Scripts.district import District
 
 #Dummy schools
-school1 = school("sus", 'a')
-school2 = school("sus", 'b')
-school3 = school("amogus", 'c')
-school4 = school("balls", 'd')
-school5 = school("amogus", 'e')
-school6 = school("balls", 'f')
-school7 = school("balls", 'g')
-school8 = school("amogus", 'h')
-school9 = school("amogus", 'i')
-school0 = school("balls", 'j')
+school1 = School("sus", 'a')
+school2 = School("sus", 'b')
+school3 = School("amogus", 'c')
+school4 = School("balls", 'd')
+school5 = School("amogus", 'e')
+school6 = School("balls", 'f')
+school7 = School("balls", 'g')
+school8 = School("amogus", 'h')
+school9 = School("amogus", 'i')
+school0 = School("balls", 'j')
 #Rowen Hinrichs
 #Listing Schools in a District
 #Schools have districts, districts do not have schools
@@ -33,9 +33,9 @@ school0 = school("balls", 'j')
 #         self.schools = schools
 
 # #Dummy districts
-sus = district("sus", [])
-amogus = district("amogus", [])
-balls = district("balls", [])
+sus = District("sus", [])
+amogus = District("amogus", [])
+balls = District("balls", [])
 
 
 
