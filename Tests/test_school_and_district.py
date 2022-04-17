@@ -1,3 +1,4 @@
+#Rowen Hinrichs
 from Main_Project_Scripts.district import District
 from Main_Project_Scripts.school import School
 from Main_Project_Scripts.Listing_Schools_in_a_District import *
@@ -21,13 +22,20 @@ class Test_Cases(unittest.TestCase):
     District_B = District("District_B", [])
     District_C = District("District_C", [])
 
+    Test1Expected = [school1, school2, school9]
+    Test2Expected = [school3, school8]
+
+
     schoolsList = [school1, school2, school3, school4, school5, school6, school7, school8, school9, school0]
 
-    schoolsInDistrictA = [school1, school2, school9]
-    def DummyTest(self):
-        #testing schools in district
-        assertEquals(listSchools(schoolsList, District_A), schoolsInDistrictA)
-        print(f"The schools in {District_A.name} are {listSchools(schoolsList, District_A)}.")
+    #testing schools in district
+    def DummyTestSchoolsInDistrict(self, schoolsList, District_A, Test1Expected):
+        self.assertEquals(listSchools(schoolsList, District_A), Test1Expected)
 
-        #testing other schools in a particular school's district.
-        print (listOtherSchools(schoolsList, school7))
+
+    #testing other schools in a particular school's district.
+    def DummyTestOtherSchools(self, schoolsList, school5, Test2Expected):
+        self.assertEquals(listOtherSchools(schoolsList, school5), Test2Expected)
+
+if __name__ == '__main__':
+    unittest.main()
