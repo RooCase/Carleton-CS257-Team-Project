@@ -1,10 +1,22 @@
+"""
+Code mainly written by Roo Case, who deeply apologizes for the state it's in.
+
+This file is responsible for many of the inner-workings of the project relating to use within a dataset.
+Most of the code here takes on the process of creating object instances.
+"""
+
 import csv
 from Main_Project_Scripts.district import District
 from Main_Project_Scripts.school import School
 
 
 def findLines(file):
-    # Creates a list of lists, where each sublist is a line in the original CSV file
+    """
+    A function that gets each individual line from a source CSV file, and then returns each row in the CSV
+    file as a list, in one large list.
+    :param file: a csv file
+    :return: a list of lists, where each "row" (internal list) represents one row of the source CSV file.
+    """
     lines = []
     with open(file, 'r') as data:
         CSVReader = csv.reader(data)
@@ -14,12 +26,17 @@ def findLines(file):
 
 
 def findIndividualGroups(lines):
-    # TODO: SO MUCH TESTING ON THIS. SO MUCH TESTING.
+    """
+    A function that finds individual units (districts or schools), and cordons them off for later use.
+    :param lines: the list of lists as created in findLines().
+    :return: a 3-dimensional list, with the inner list being each line, the next outer list being each "unit", and the
+    most outer layer being a list of these units
+    """
     dataset = []
     firstReaderIndex = 0
     secondReaderIndex = 1
 
-    if(lines[0] == "Yes" or lines[0] == "No"):
+    if lines[0][0] == "Yes" or lines[0][0] == "No":
         nameLocation = 1
     else:
         nameLocation = 0
