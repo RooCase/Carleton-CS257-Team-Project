@@ -6,16 +6,16 @@ import unittest
 
 class Test_Cases(unittest.TestCase):
     #Test schools
-    school1 = School("District_A", 'a')
-    school2 = School("District_A", 'b')
-    school3 = School("District_B", 'c')
-    school4 = School("District_C", 'd')
-    school5 = School("District_B", 'e')
-    school6 = School("District_C", 'f')
-    school7 = School("District_C", 'g')
-    school8 = School("District_B", 'h')
-    school9 = School("District_A", 'i')
-    school0 = School("District_C", 'j')
+    school1 = School('No', "District_A", 'Dummy1', 420, [1, 2, 3, 4, 5])
+    school2 = School('No', "District_A", 'Dummy2', 1000, [1, 2, 3, 4, 5])
+    school3 = School('No', "District_B", 'Dummy3', 1000, [1, 2, 3, 4, 5])
+    school4 = School('No', "District_C", 'Dummy4', 1000, [1, 2, 3, 4, 5])
+    school5 = School('No', "District_B", 'Dummy5', 1000, [1, 2, 3, 4, 5])
+    school6 = School('No', "District_C", 'Dummy6', 8008, [1, 2, 3, 4, 5])
+    school7 = School('No', "District_C", 'Dummy7', 1000, [1, 2, 3, 4, 5])
+    school8 = School('No', "District_B", 'Dummy8', 69, [1, 2, 3, 4, 5])
+    school9 = School('No', "District_A", 'Dummy9', 1000, [1, 2, 3, 4, 5])
+    school0 = School('No', "District_C", 'Dummy0', 1000, [1, 2, 3, 4, 5])
 
     #Test districts
     District_A = District("District_A", [])
