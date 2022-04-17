@@ -1,5 +1,5 @@
-from Main_Project_Scripts.school import School
 from Main_Project_Scripts.district import District
+from Main_Project_Scripts.school import School
 
 #Dummy schools
 school1 = School("sus", 'a')
@@ -12,6 +12,12 @@ school7 = School("balls", 'g')
 school8 = School("amogus", 'h')
 school9 = School("amogus", 'i')
 school0 = School("balls", 'j')
+
+#Dummy districts
+sus = District("sus", [])
+amogus = District("amogus", [])
+balls = District("balls", [])
+
 #Rowen Hinrichs
 #Listing Schools in a District
 #Schools have districts, districts do not have schools
@@ -32,15 +38,6 @@ school0 = School("balls", 'j')
 #         self.name = name
 #         self.schools = schools
 
-# #Dummy districts
-sus = District("sus", [])
-amogus = District("amogus", [])
-balls = District("balls", [])
-
-
-
-
-
 schoolsList = [school1, school2, school3, school4, school5, school6, school7, school8, school9, school0]
 
 districtList = [sus, amogus, balls]
@@ -58,12 +55,22 @@ districtList = [sus, amogus, balls]
 #Lists schools in a district, given a list of all schools and a district
 #I don't think it needs to return anything, because it's only editing an object that already exists.
 def listSchools(schoolsList, District):
-    schoolNameList = []
     for school in schoolsList:
         if school.district == District.name:
             District.schools.append(school.name)
-    print(f"The schools in {District.name} are {District.schools}.")
+    
+
+def listOtherSchools(schoolList, school):
+    district = school.district
+    listSchools(schoolList, district)
+    listOfOtherSchools = district.school_list.copy()
+    for i in listOfOtherSchools:
+            if i == school:
+                listOfOtherSchools.remove(i)
+    return listOfOtherSchools
 
 
 listSchools(schoolsList, amogus)
+print(f"The schools in {amogus.name} are {amogus.schools}.")
+print (listOtherSchools(schoolsList, school7))
 
