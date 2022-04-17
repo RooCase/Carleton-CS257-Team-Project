@@ -1,5 +1,5 @@
 """
-Code mainly written by Roo Case, who deeply apologizes for the state it's in.
+Code written by Roo Case
 
 This file is responsible for many of the inner-workings of the project relating to use within a dataset.
 Most of the code here takes on the process of creating object instances.
@@ -30,29 +30,43 @@ def findIndividualGroups(lines):
     A function that finds individual units (districts or schools), and cordons them off for later use.
     :param lines: the list of lists as created in findLines().
     :return: a 3-dimensional list, with the inner list being each line, the next outer list being each "unit", and the
-    most outer layer being a list of these units
+    most outer layer being a list of these units.
     """
     dataset = []
     firstReaderIndex = 0
     secondReaderIndex = 1
 
     if lines[0][0] == "Yes" or lines[0][0] == "No":
+        #The two datasets has the data in a slightly different order.
+        #Lines 39 through 44 are for determining which datatype is being delt with
         nameLocation = 1
     else:
         nameLocation = 0
 
     while firstReaderIndex < len(lines):
+        """
+        This while loop looks has two pointer nodes, 'firstReaderIndex' and 'secondReaderIndex'
+        secondReaderIndex will always be at least 1 ahead of firstReaderIndex. They mark the head and tail
+        of each of set of data associated with a singular unit (being a school or district)
+        
+        Once a block has been correctly identified, the head will go to the tail +1, and the cycle will begin anew.
+        """
         while secondReaderIndex < len(lines) and \
                 (lines[firstReaderIndex][nameLocation] == lines[secondReaderIndex][nameLocation]):
             secondReaderIndex += 1
         dataset.append(lines[firstReaderIndex:secondReaderIndex])
-        firstReaderIndex = secondReaderIndex
+        firstReaderIndex = secondReaderIndex + 1
         secondReaderIndex += 1
 
     return dataset
 
 
 def createSchool(lines):
+    """
+    Creates school object with data provided.
+    :param lines: the lines representing a given school dataset.
+    :return: the created school object
+    """
     # TODO: Test this function
     # Creates a school from a set of lines
     charter = isCharter(lines[0])
@@ -63,6 +77,11 @@ def createSchool(lines):
 
 
 def createDistrict(lines):
+    """
+    A function that creates a district object with the data provided
+    :param lines: the lines representing a school district dataset
+    :return:
+    """
     if lines[0][1] != "Charter agency":
         grades = removeNAGradesAndCombineAllGrades(lines, 11)
         initDistrict = District(lines[0][0], lines[0][2], [], fillGrades(grades))
@@ -70,10 +89,13 @@ def createDistrict(lines):
     else:
         return None
 
-def listSchoolsInDistrict():
-    return None
 
 def isCharter(line):
+    """
+    Checks to see if a school is a charter school
+    :param line: a singular list, representing a line of a CSV file
+    :return: a string that will be stored and outputted later.
+    """
     if "Yes" in line[0]:
         return "charter"
     else:
@@ -81,12 +103,19 @@ def isCharter(line):
 
 
 def removeNAGradesAndCombineAllGrades(lines, lowerBoundInclusive):
-    # Creates a list of grades, which each index takes the form "Grade: Value"
-    # TODO: Test this function
+    """
+    Not all schools and districts have all grades (well, most districts do, but we're including the possibility for
+    edge cases here.) This function trims down all the grades that don't exist, and combines all the lines into a
+    singular list of grades.
+    :param lines: the lines representing a school district dataset
+    :param lowerBoundInclusive: because of differences in our dataset's formatting, this parameter represents where in the list the data in question begins.
+    :return: a list of list of grades's learning modes, by week.
+    """
     returnLines = []
     for line in lines:
-        if(len(line) > 12):
-            grades = (line[lowerBoundInclusive] + ";" + line[lowerBoundInclusive+1] + ";" + line[lowerBoundInclusive+2]).split(";")
+        if (len(line) > 12):
+            grades = (line[lowerBoundInclusive] + ";" + line[lowerBoundInclusive + 1] + ";" + line[
+                lowerBoundInclusive + 2]).split(";")
             i = 0
             while i < len(grades):
                 if "NA" in grades[i]:
@@ -99,6 +128,11 @@ def removeNAGradesAndCombineAllGrades(lines, lowerBoundInclusive):
 
 
 def fillGrades(lines):
+    """
+    creates a dictionary of grades and their learning modes.
+    :param lines: a list of list of grades's learning modes, by week.
+    :return: dictionary of grades and their learning modes. Each index in the value for each key represents a given week.
+    """
     gradeDictionary = {
         "K": [],
         "Gr1": [],
