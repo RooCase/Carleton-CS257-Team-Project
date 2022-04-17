@@ -16,5 +16,3 @@ def listOtherSchools(schoolList, school):
             if i == school:
                 listOfOtherSchools.remove(i)
     return listOfOtherSchools
-
-
