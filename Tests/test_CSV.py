@@ -68,7 +68,7 @@ Morris Dance School District,Regular local school district,413,Weekly,5/29/21,6/
         self.assertEqual(districts[0].get_district_data(), """District name: Ada-Borup Public School District
 Enrollment for this district: 578
 List of schools:\n""")
-        self.assertEqual(districts[1].get_district_data(),"""District name: Achieve Language Academy
+        self.assertEqual(districts[1].get_district_data(),"""District name: Morris Dance School District
 Enrollment for this district: 413
 List of schools:\n""")
 
