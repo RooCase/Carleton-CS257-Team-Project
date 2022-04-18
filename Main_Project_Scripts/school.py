@@ -1,7 +1,9 @@
-# file for parsing the rows from the dataset as School objects and doing operations with them
-# class for School objects
-import weekly_mode_tracker
-
+"""
+Initializing the School object and creating all the basic getters and setters for it.
+Written by Artem Yushko
+"""
+from Main_Project_Scripts import weekly_mode_tracker
+import pandas as pd
 
 class School(weekly_mode_tracker.WeeklyModeTracker):
     def __init__(self, charter, district, name, size, grades):
@@ -15,13 +17,22 @@ class School(weekly_mode_tracker.WeeklyModeTracker):
     def get_district(self):
         return self.district
 
-    # creates a list of available grades in the school/
+    # creates a list of available grades in the school
     def get_available_grades(self):
         # instance variable for available grades
         available = []
         for i in self.grades:
             if self.grades[i]:
                 available.append(i)
+        return available
+
+    # the same function, but as a list
+    def get_list_available_grades(self):
+        # instance variable for available grades
+        available = []
+        for i in self.grades:
+            if self.grades[i]:
+                available.append("Grade " + str(i))
         return available
 
     # printing out the information about the school
@@ -38,3 +49,34 @@ School name: {self.name}.\nThis is a {self.charter} school with a student body o
 School name: {self.name}\nThis is a {self.charter} school with a student body of {self.size} students.\nIt is located in {self.district}.\nThese grades are available: {grds} 
 """
         return info
+
+    # getting weekly covid data from the school
+    def get_covid_data(self):
+        # setting the row and column names
+        row_names = self.get_list_available_grades()
+        col_names = self.get_school_year()
+        # creating the matrix as a file
+        matrix = []
+        # adding grades to the matrix
+        for grade in self.grades:
+            if self.grades[grade]:
+                i = 0
+                row = []
+                while i < len(self.grades[grade]):
+                    row.append(self.grades[grade][i])
+                    i += 1
+                matrix.append(row)
+        # creating the matrix
+        df = pd.DataFrame(matrix, columns=col_names, index=row_names)
+        return df
+
+    # getting the length of the school year
+    def get_school_year(self):
+        school_year_len = []
+        for grade in self.grades:
+            if self.grades[grade]:
+                i = 0
+                while i < len(self.grades[grade]):
+                    school_year_len.append("Week " + str(i+1))
+                    i += 1
+                return school_year_len

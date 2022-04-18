@@ -1,3 +1,8 @@
+"""
+Testing file for the School class
+Written by Artem Yushko
+"""
+
 from Main_Project_Scripts.school import School
 import unittest
 
@@ -12,6 +17,7 @@ dummy_grade_data = {'1': [], '2': [], '3': [], '4': [], '5': [],
 
 dummy_school = School("Charter", "Dummy District", "Dummy Name", "1234", dummy_grade_data)
 print(dummy_school.get_school_info())
+print(dummy_school.get_covid_data())
 
 class SchoolTest(unittest.TestCase):
     def testGetDistrict(self):
