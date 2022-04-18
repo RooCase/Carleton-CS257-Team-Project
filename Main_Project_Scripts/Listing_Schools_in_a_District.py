@@ -1,10 +1,10 @@
 #Rowen Hinrichs
 
 #Lists schools in a district, given a list of all schools and a district
-def listSchools(schoolsList, District):
+def listSchools(schoolsList, DistrictName):
     listOfSchoolsInDistrict = []
     for school in schoolsList:
-        if school.district == District.name:
+        if school.district == DistrictName:
             listOfSchoolsInDistrict.append(school)
     return listOfSchoolsInDistrict
     
