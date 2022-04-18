@@ -1,5 +1,6 @@
 """
 Non-CLI functions written by Roo Case.
+CLI and its helper functions written by Batmend.
 
 This is the main python file, that has the highest amount of abstraction. The code for our command-line-interface is
 here, as well as the helper functions that are a part of that.
@@ -39,12 +40,22 @@ def importDistricts(schools):
     return listOfDistricts
 
 def list_objects(objectList):
+    """
+    A helper function that concatenates and returns the member objects' names.
+    :param: a list of objects.
+    :return: concatenated string consisting of member objects' names.
+    """
     output = ''
     for object in objectList:
         output += f'{object.name}\n'
     return output
 
 def find_object_by_name(listOfObjects, objectName):
+    """
+    A helper function that returns a member object with matching name.
+    :param: a list of objects and a namestring.
+    :return" an object whose name matches the namestring.
+    """
     for object in listOfObjects:
         if object.name == objectName:
             return object
@@ -54,8 +65,6 @@ def setup():
     districts = importDistricts(schools)
     
     return schools, districts
-
-
 
 if __name__ == '__main__':
     schools, districts = setup()
