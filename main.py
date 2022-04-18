@@ -76,8 +76,8 @@ if __name__ == '__main__':
         else:
             print(find_object_by_name(districts, argumentList[1]).get_district_data())
 
-    if argumentList[0] == "-list-districts":
+    if argumentList[0] == "--list-districts":
        print(list_objects(districts))
     
-    if argumentList[0] == "-list-schools":
+    if argumentList[0] == "--list-schools":
        print(list_objects(schools))
