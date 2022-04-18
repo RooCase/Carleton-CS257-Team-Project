@@ -1,6 +1,6 @@
 """
-Non-CLI functions written by Roo Case.
 CLI and its helper functions written by Batmend.
+Non-CLI functions written by Roo Case.
 
 This is the main python file, that has the highest amount of abstraction. The code for our command-line-interface is
 here, as well as the helper functions that are a part of that.
@@ -95,6 +95,15 @@ def find_district_info_by_name(districts, districtName):
     else:
         return resultDistrict.get_district_data()
 
+def get_weekly_data(schools, schoolName):
+    """
+    A helper function that returns a school's weekly data.
+    :param: List of school objects and a name of a school
+    :return: Weekly data of a school
+    """
+    resultSchool = find_object_by_name(schools, schoolName)
+    return resultSchool.get_covid_data().transpose()
+
 if __name__ == '__main__':
     schools, districts = setup()
     argumentList = sys.argv[1:]
@@ -112,5 +121,8 @@ if __name__ == '__main__':
     
     if argumentList[0] == "--list-schools":
        terminalOutput = list_objects(schools)
+
+    if argumentList[0] == "--weekly-data":
+        terminalOutput = get_weekly_data(schools, argumentList[1])
 
     print(terminalOutput)
