@@ -1,6 +1,6 @@
 # file for parsing the rows from the dataset as School objects and doing operations with them
 # class for School objects
-from Main_Project_Scripts import weekly_mode_tracker
+import weekly_mode_tracker
 
 
 class School(weekly_mode_tracker.WeeklyModeTracker):
