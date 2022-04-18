@@ -1,6 +1,8 @@
 #Rowen Hinrichs
 
-#Lists schools in a district, given a list of all schools and a district
+#A function that lists schools in a district, given a list of all schools and a district
+#:param: list of all schools and name of district
+#:return: list of school objects in given district
 def listSchools(schoolsList, DistrictName):
     listOfSchoolsInDistrict = []
     for school in schoolsList:
@@ -8,7 +10,9 @@ def listSchools(schoolsList, DistrictName):
             listOfSchoolsInDistrict.append(school)
     return listOfSchoolsInDistrict
     
-#List all the other schools in a particular school's district, given a school.
+#A function that lists all the other schools in a particular school's district, given a school.
+#:param: List of all schools and a school object
+#:return: List of all school objects that share a district with param school.
 def listOtherSchools(schoolList, school):
     district = school.district
     listOfOtherSchools = listSchools(schoolList, district)
