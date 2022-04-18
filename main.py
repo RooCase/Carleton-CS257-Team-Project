@@ -17,7 +17,7 @@ def importSchools():
     :return: a list of schools
     """
     listOfSchools = []
-    parsedCSV = findIndividualGroups(findLines("Data/Minnesota_Schools_Modified.csv"))
+    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data/Minnesota_Schools_Modified.csv"))
     for group in parsedCSV:
         listOfSchools.append(createSchool(group))
     return listOfSchools
@@ -30,7 +30,7 @@ def importDistricts(schools):
     :return: a list of districts
     """
     listOfDistricts = []
-    parsedCSV = findIndividualGroups(findLines("Data/Minnesota_Districts_LearningModelData_Modified.csv"))
+    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data/Minnesota_Districts_LearningModelData_Modified.csv"))
 
     for group in parsedCSV:
         
@@ -61,6 +61,11 @@ def find_object_by_name(listOfObjects, objectName):
             return object
 
 def setup():
+    """
+    A quick helper function that sets up the data in the proper manner.
+    :return: schools: list of all schools in the Schools dataset.
+             districts: a list of all districts in the Districts dataset.
+    """
     schools = importSchools()
     districts = importDistricts(schools)
     
