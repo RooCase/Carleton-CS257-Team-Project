@@ -4,9 +4,13 @@ Data that users could input:
 - request list
 
 CLI:
-python3 schools.py -n "School Name"
+python3 main.py -s "School Name"     //finds data about entered school
+python3 main.py -d "District Name"     //finds data about entered district
+python3 main.py --list-districts        //list all districts in the database
+python3 main.py --list-schools      //list all schools in the database
+
 python3 example.py -sd "School District Name"
-python3 schools.py -l "what to list (School districts, grades)"
+python3 school.py -l "what to list (School districts, grades)"
 
 Function signatures:
 
