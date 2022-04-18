@@ -1,6 +1,6 @@
 """
-Testing file for the School class
-Written by Artem Yushko
+Testing file for the School class.
+Written by Artem Yushko.
 """
 
 from Main_Project_Scripts.school import School
