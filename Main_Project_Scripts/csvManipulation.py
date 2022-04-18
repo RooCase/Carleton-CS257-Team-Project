@@ -154,5 +154,9 @@ def fillGrades(lines):
     for line in lines:
         for cell in line:
             splits = cell.strip(" ").split(":")
-            gradeDictionary[splits[0]].append(splits[1])
+            try:
+                gradeDictionary[splits[0]].append(splits[1])
+            except(KeyError):
+                continue
+
     return gradeDictionary
