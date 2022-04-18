@@ -1,11 +1,10 @@
 """
 Tests by Roo Case.
 """
-import unittest, csv
+import unittest
 
 from Main_Project_Scripts import csvManipulation
 from Main_Project_Scripts.csvManipulation import findIndividualGroups, createDistrict
-from Main_Project_Scripts.school import School
 
 
 class CSVTest(unittest.TestCase):

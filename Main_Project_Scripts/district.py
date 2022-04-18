@@ -1,4 +1,4 @@
-from weekly_mode_tracker import WeeklyModeTracker
+from Main_Project_Scripts.weekly_mode_tracker import WeeklyModeTracker
 
 
 class District(WeeklyModeTracker):

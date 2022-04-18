@@ -1,9 +1,9 @@
 # file for parsing the rows from the dataset as School objects and doing operations with them
 # class for School objects
-import weekly_mode_tracker
+from Main_Project_Scripts.weekly_mode_tracker import WeeklyModeTracker
 
 
-class School(weekly_mode_tracker.WeeklyModeTracker):
+class School(WeeklyModeTracker):
     def __init__(self, charter, district, name, size, grades):
         self.charter = charter
         self.district = district

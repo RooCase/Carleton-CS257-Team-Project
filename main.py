@@ -6,10 +6,7 @@ here, as well as the helper functions that are a part of that.
 """
 
 import sys
-import district
-import school
-import csvManipulation
-from csvManipulation import findIndividualGroups, findLines, createSchool, createDistrict
+from Main_Project_Scripts.csvManipulation import findIndividualGroups, findLines, createSchool, createDistrict
 
 def importSchools():
     """
@@ -17,7 +14,7 @@ def importSchools():
     :return: a list of schools
     """
     listOfSchools = []
-    parsedCSV = findIndividualGroups(findLines("Data/Minnesota_Schools_Modified.csv"))
+    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data/Minnesota_Schools_Modified.csv"))
     for group in parsedCSV:
         listOfSchools.append(createSchool(group))
     return listOfSchools
@@ -30,7 +27,7 @@ def importDistricts(schools):
     :return: a list of districts
     """
     listOfDistricts = []
-    parsedCSV = findIndividualGroups(findLines("Data/Minnesota_Districts_LearningModelData_Modified.csv"))
+    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data/Minnesota_Districts_LearningModelData_Modified.csv"))
 
     for group in parsedCSV:
         
@@ -77,8 +74,8 @@ if __name__ == '__main__':
         else:
             print(find_object_by_name(districts, argumentList[1]).get_district_data())
 
-    if argumentList[0] == "-list-districts":
+    if argumentList[0] == "--list-districts":
        print(list_objects(districts))
     
-    if argumentList[0] == "-list-schools":
+    if argumentList[0] == "--list-schools":
        print(list_objects(schools))

@@ -10,7 +10,6 @@ def listSchools(schoolsList, DistrictName):
             if school.district == DistrictName:
                 listOfSchoolsInDistrict.append(school)
         if listOfSchoolsInDistrict == []:
-            print("There are no schools in that district.")
             return
     return listOfSchoolsInDistrict
     
