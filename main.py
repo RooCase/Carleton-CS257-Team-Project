@@ -6,10 +6,9 @@ here, as well as the helper functions that are a part of that.
 """
 
 import sys
-import district
-import school
-import csvManipulation
-from csvManipulation import findIndividualGroups, findLines, createSchool, createDistrict
+import Main_Project_Scripts.district
+import Main_Project_Scripts.school
+from Main_Project_Scripts.csvManipulation import findIndividualGroups, findLines, createSchool, createDistrict
 
 def importSchools():
     """
