@@ -1,5 +1,7 @@
-# file for parsing the rows from the dataset as School objects and doing operations with them
-# class for School objects
+"""
+Initializing the School object and initializing all operations for it.
+Written by Artem Yushko
+"""
 from Main_Project_Scripts import weekly_mode_tracker
 
 
