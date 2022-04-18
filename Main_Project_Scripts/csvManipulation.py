@@ -6,9 +6,9 @@ Most of the code here takes on the process of creating object instances.
 """
 
 import csv
-from district import District
-from school import School
-from Listing_Schools_in_a_District import listSchools
+from Main_Project_Scripts.district import District
+from Main_Project_Scripts.school import School
+from Main_Project_Scripts.Listing_Schools_in_a_District import listSchools
 
 
 def findLines(file):
