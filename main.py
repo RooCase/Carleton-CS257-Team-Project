@@ -71,27 +71,46 @@ def setup():
     
     return schools, districts
 
+def find_school_info_by_name(schools, schoolName):
+    """
+    A helper function that returns school data with a given name.
+    :param: List of school objects and a name of a school
+    :return: Info of a school as a string
+    """
+    resultSchool = find_object_by_name(schools, schoolName)
+    if resultSchool == None:
+        return "School Not Found"
+    else:
+        return resultSchool.get_school_info()
+
+def find_district_info_by_name(districts, districtName):
+    """
+    A helper function that returns district data with a given name.
+    :param: List of district objects and a name of a district
+    :return: Info of a district as a string
+    """
+    resultDistrict = find_object_by_name(districts, districtName)
+    if resultDistrict == None:
+        return "district Not Found"
+    else:
+        return resultDistrict.get_district_data()
+
 if __name__ == '__main__':
     schools, districts = setup()
-
     argumentList = sys.argv[1:]
-
+    
+    terminalOutput = ""
+    
     if argumentList[0] == "-s":
-        resultSchool = find_object_by_name(schools, argumentList[1])
-        if resultSchool == None:
-            print("School Not Found")
-        else:
-            print(resultSchool.get_school_info())
+        terminalOutput = find_school_info_by_name(schools, argumentList[1])
 
     if argumentList[0] == "-d":
-        resultDistrict = find_object_by_name(districts, argumentList[1])
-        if resultDistrict == None:
-            print("District Not Found")
-        else:
-            print(find_object_by_name(districts, argumentList[1]).get_district_data())
+        terminalOutput = find_district_info_by_name(districts, argumentList[1])
 
     if argumentList[0] == "--list-districts":
-       print(list_objects(districts))
+        terminalOutput = list_objects(districts)
     
     if argumentList[0] == "--list-schools":
-       print(list_objects(schools))
+       terminalOutput = list_objects(schools)
+
+    print(terminalOutput)
