@@ -5,9 +5,10 @@
 #:return: list of school objects in given district
 def listSchools(schoolsList, DistrictName):
     listOfSchoolsInDistrict = []
-    for school in schoolsList:
-        if school.district == DistrictName:
-            listOfSchoolsInDistrict.append(school)
+    if schoolsList != None:
+        for school in schoolsList:
+            if school.district == DistrictName:
+                listOfSchoolsInDistrict.append(school)
     return listOfSchoolsInDistrict
     
 #A function that lists all the other schools in a particular school's district, given a school.
