@@ -21,9 +21,11 @@ class Test_Cases(unittest.TestCase):
     District_A = District("District_A", 10, [], [1, 2, 3, 4, 5])
     District_B = District("District_B", 20, [], [1, 2, 3, 4, 5])
     District_C = District("District_C", 30, [], [1, 2, 3, 4, 5])
+    District_D = District("District_D", 40, [], [1, 2, 3, 4, 5])
 
     Test1Expected = [school1, school2, school9]
     Test2Expected = [school3, school8]
+    Test3Expected = None
 
 
     schoolsList = [school1, school2, school3, school4, school5, school6, school7, school8, school9, school0]
@@ -41,5 +43,11 @@ class Test_Cases(unittest.TestCase):
     def DummyTestOtherSchools(self, schoolsList, school5, Test2Expected):
         self.assertEquals(listOtherSchools(schoolsList, school5), Test2Expected)
 
+    #A test for the listSchools function if an invalid district is entered.
+    #:param: list of all schools, dummy district with no schools in it
+    #:return: None
+    def EdgeCaseSchoolsInDistrict(self, schoolsList, District_D, Test3Expected):
+        self.assertEquals(listSchools(schoolsList, District_D), Test3Expected)
+        
 if __name__ == '__main__':
     unittest.main()

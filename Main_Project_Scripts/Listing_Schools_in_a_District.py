@@ -9,6 +9,9 @@ def listSchools(schoolsList, DistrictName):
         for school in schoolsList:
             if school.district == DistrictName:
                 listOfSchoolsInDistrict.append(school)
+        if listOfSchoolsInDistrict == []:
+            print("There are no schools in that district.")
+            return
     return listOfSchoolsInDistrict
     
 #A function that lists all the other schools in a particular school's district, given a school.
