@@ -18,9 +18,9 @@ class Test_Cases(unittest.TestCase):
     school0 = School('No', "District_C", 'Dummy0', 1000, [1, 2, 3, 4, 5])
 
     #Test districts
-    District_A = District("District_A", [])
-    District_B = District("District_B", [])
-    District_C = District("District_C", [])
+    District_A = District("District_A", 10, [], [1, 2, 3, 4, 5])
+    District_B = District("District_B", 20, [], [1, 2, 3, 4, 5])
+    District_C = District("District_C", 30, [], [1, 2, 3, 4, 5])
 
     Test1Expected = [school1, school2, school9]
     Test2Expected = [school3, school8]
@@ -28,12 +28,16 @@ class Test_Cases(unittest.TestCase):
 
     schoolsList = [school1, school2, school3, school4, school5, school6, school7, school8, school9, school0]
 
-    #testing schools in district
+    #A test for the listSchools function
+    #:param: List of all test schools, test district object, expected result
+    #:return: list of schools in test district
     def DummyTestSchoolsInDistrict(self, schoolsList, District_A, Test1Expected):
         self.assertEquals(listSchools(schoolsList, District_A), Test1Expected)
 
 
-    #testing other schools in a particular school's district.
+    #A test for the listOtherSchools function
+    #:param: list of all schools, school object, expected result
+    #:return: a list of schools that share school5's district.
     def DummyTestOtherSchools(self, schoolsList, school5, Test2Expected):
         self.assertEquals(listOtherSchools(schoolsList, school5), Test2Expected)
 
