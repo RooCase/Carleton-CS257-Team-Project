@@ -1,8 +1,6 @@
-"""
-Initializing the School object and initializing all operations for it.
-Written by Artem Yushko
-"""
-from Main_Project_Scripts import weekly_mode_tracker
+# file for parsing the rows from the dataset as School objects and doing operations with them
+# class for School objects
+import weekly_mode_tracker
 
 
 class School(weekly_mode_tracker.WeeklyModeTracker):
@@ -31,17 +29,12 @@ class School(weekly_mode_tracker.WeeklyModeTracker):
         # showing possible grades
         grds = ", ".join([str(x) for x in self.get_available_grades()])
         # printing out the school information
-        if self.charter == "Charter":
+        if self.charter == "charter":
             info = f"""
-            School name: {self.name}
-            This is a {self.charter} school with a student body of {self.size} students.
-            Those grades are available: {grds} 
-            """
+School name: {self.name}.\nThis is a {self.charter} school with a student body of {self.size} students.\nThese grades are available: {grds}
+"""
         else:
             info = f"""
-            School name: {self.name}
-            This is a {self.charter} school with a student body of {self.size} students.
-            It is located in {self.district}.
-            Those grades are available: {grds} 
-            """
+School name: {self.name}\nThis is a {self.charter} school with a student body of {self.size} students.\nIt is located in {self.district}.\nThese grades are available: {grds} 
+"""
         return info
