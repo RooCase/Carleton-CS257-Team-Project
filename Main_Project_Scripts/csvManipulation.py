@@ -8,6 +8,7 @@ Most of the code here takes on the process of creating object instances.
 import csv
 from Main_Project_Scripts.district import District
 from Main_Project_Scripts.school import School
+from Main_Project_Scripts.Listing_Schools_in_a_District import listSchools
 
 
 def findLines(file):
@@ -76,15 +77,16 @@ def createSchool(lines):
     return initSchool
 
 
-def createDistrict(lines):
+def createDistrict(lines, schools):
     """
     A function that creates a district object with the data provided
     :param lines: the lines representing a school district dataset
+    :param schools: a list of schools, as to be sorted through by a separate helper function.
     :return:
     """
     if lines[0][1] != "Charter agency":
         grades = removeNAGradesAndCombineAllGrades(lines, 11)
-        initDistrict = District(lines[0][0], lines[0][2], [], fillGrades(grades))
+        initDistrict = District(lines[0][0], lines[0][2], listSchools(schools, lines[0][0]), fillGrades(grades))
         return initDistrict
     else:
         return None
