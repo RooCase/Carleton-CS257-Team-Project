@@ -1,3 +1,6 @@
+"""
+Written by
+"""
 class WeeklyModeTracker:
 
     def add_week(self, mode_list):

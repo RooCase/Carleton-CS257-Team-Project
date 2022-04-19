@@ -1,5 +1,7 @@
+"""
+Written by
+"""
 from Main_Project_Scripts.weekly_mode_tracker import WeeklyModeTracker
-
 
 class District(WeeklyModeTracker):
     def __init__(self, name, enrollment, school_list, grades):
