@@ -8,9 +8,12 @@ python3 main.py -s "School Name"     //finds data about entered school
 python3 main.py -d "District Name"     //finds data about entered district
 python3 main.py --list-districts        //list all districts in the database
 python3 main.py --list-schools      //list all schools in the database
+python3 main.py --weekly-data       //give school covid data by grade for schools
 
-python3 example.py -sd "School District Name"
-python3 school.py -l "what to list (School districts, grades)"
+Examples:
+python3 main.py -s "Avalon School"
+python3 main.py -d "Minneapolis Public School District"
+python3 main.py --weekly-data "Great River School"
 
 Function signatures:
 
