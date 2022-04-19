@@ -38,8 +38,8 @@ def findIndividualGroups(lines):
     secondReaderIndex = 1
 
     if lines[0][0] == "Yes" or lines[0][0] == "No":
-        #The two datasets has the data in a slightly different order.
-        #Lines 39 through 44 are for determining which datatype is being delt with
+        # The two datasets has the data in a slightly different order.
+        # Lines 39 through 44 are for determining which datatype is being delt with
         nameLocation = 1
     else:
         nameLocation = 0
