@@ -17,7 +17,8 @@ def importSchools():
     :return: a list of schools
     """
     listOfSchools = []
-    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data/Minnesota_Schools_Modified.csv"))
+    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data"
+                                               "/Minnesota_Schools_Modified.csv"))
     for group in parsedCSV:
         listOfSchools.append(createSchool(group))
     return listOfSchools
@@ -30,7 +31,8 @@ def importDistricts(schools):
     :return: a list of districts
     """
     listOfDistricts = []
-    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data/Minnesota_Districts_LearningModelData_Modified.csv"))
+    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data"
+                                               "/Minnesota_Districts_LearningModelData_Modified.csv"))
 
     for group in parsedCSV:
         
@@ -128,6 +130,7 @@ if __name__ == '__main__':
         python3 main.py -d "Minneapolis Public School District"
         python3 main.py --weekly-data "Great River School"
         """
+
     elif argumentList[0] == "-s":
         terminalOutput = find_school_info_by_name(schools, argumentList[1])
     elif argumentList[0] == "-d":
