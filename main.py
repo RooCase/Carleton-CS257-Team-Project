@@ -17,7 +17,7 @@ def importSchools():
     :return: a list of schools
     """
     listOfSchools = []
-    parsedCSV = findIndividualGroups(findLines("Data/Minnesota_Schools_Modified.csv"))
+    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data/Minnesota_Schools_Modified.csv"))
     for group in parsedCSV:
         listOfSchools.append(createSchool(group))
     return listOfSchools
@@ -30,7 +30,7 @@ def importDistricts(schools):
     :return: a list of districts
     """
     listOfDistricts = []
-    parsedCSV = findIndividualGroups(findLines("Data/Minnesota_Districts_LearningModelData_Modified.csv"))
+    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data/Minnesota_Districts_LearningModelData_Modified.csv"))
 
     for group in parsedCSV:
         
@@ -109,20 +109,34 @@ if __name__ == '__main__':
     argumentList = sys.argv[1:]
     
     terminalOutput = ""
-    
-    if argumentList[0] == "-s":
+
+    if len(argumentList) > 2 or len(argumentList) < 1:
+        terminalOutput = "Please input only one argument and that you have input a valid command. For more info, you can type \'python3 main.py -h\'"
+    if argumentList[0] == "-h" or argumentList[0] == "--help":
+        terminalOutput = """
+        HELP: 
+        
+        CLI options:
+        -s "School Name"      //finds data about entered school
+        -d "District Name"    //finds data about entered district
+        --list-districts      //list all districts in the database
+        --list-schools        //list all schools in the database
+        --weekly-data         //give school covid data by grade for schools
+        
+        Examples:
+        python3 main.py -s "Avalon School"
+        python3 main.py -d "Minneapolis Public School District"
+        python3 main.py --weekly-data "Great River School"
+        """
+    elif argumentList[0] == "-s":
         terminalOutput = find_school_info_by_name(schools, argumentList[1])
-
-    if argumentList[0] == "-d":
+    elif argumentList[0] == "-d":
         terminalOutput = find_district_info_by_name(districts, argumentList[1])
-
-    if argumentList[0] == "--list-districts":
+    elif argumentList[0] == "--list-districts":
         terminalOutput = list_objects(districts)
-    
-    if argumentList[0] == "--list-schools":
+    elif argumentList[0] == "--list-schools":
        terminalOutput = list_objects(schools)
-
-    if argumentList[0] == "--weekly-data":
+    elif argumentList[0] == "--weekly-data":
         terminalOutput = get_weekly_data(schools, argumentList[1])
 
     print(terminalOutput)
