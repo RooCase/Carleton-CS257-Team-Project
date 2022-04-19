@@ -1,9 +1,5 @@
-import os
-import sys
+from Main_Project_Scripts import district, school
 import unittest
-sys.path.append(os.path.join(os.path.dirname(sys.path[0]), "Main_Project_Scripts"))
-import district
-import school
 
 class TestDistrict(unittest.TestCase):
     sampleSchool = school.School("No", "DummyDistrict", "DummySchool", 69, [1, 2, 3, 4, 5])
@@ -20,6 +16,3 @@ class TestDistrict(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
