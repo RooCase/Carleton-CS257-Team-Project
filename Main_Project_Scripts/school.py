@@ -73,9 +73,11 @@ School name: {self.name}\nThis is a {self.charter} school with a student body of
     # getting the length of the school year
     def get_school_year(self):
         school_year_len = []
+        # iterating through the grade list to get the length of the school year
         for grade in self.grades:
             if self.grades[grade]:
                 i = 0
+                # counting weeks and adding them as strings
                 while i < len(self.grades[grade]):
                     school_year_len.append("Week " + str(i+1))
                     i += 1
