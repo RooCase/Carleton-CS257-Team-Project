@@ -44,7 +44,7 @@ School name: Academia Cesar Chavez Charter School.\nThis is a charter school wit
 
     def testSchoolDistrictObjectCreation(self):
         """
-        tests the creation of a school district object from a CSV input.
+        tests the creation of a school district object from a CSV input. This encorporates an edge case: A school district that isn't actually a proper district we should consider, rather a random charter school that appeared in the district dataset for no good reason.
         :return: none
         """
         sampleData = """Achieve Language Academy,Charter agency,413,Weekly,5/15/21,5/21/21,In-person,In-person,In-person,,In-Person,K: AllInPerson; Gr1: AllInPerson; Gr2: AllInPerson; Gr3: AllInPerson; Gr4: AllInPerson; Gr5: AllInPerson,Gr6: AllInPerson; Gr7: AllInPerson; Gr8: AllInPerson,Gr9: No Data Available; Gr10: No Data Available; Gr11: No Data Available; Gr12: No Data Available,,,
