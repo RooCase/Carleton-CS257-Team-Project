@@ -16,7 +16,7 @@ def listSchools():
 @app.route('/list/districts')
 def listDisctricts():
     schools, districts = setup()
-    return list_objects(schools)
+    return list_objects(districts)
 
 app.run(host='0.0.0.0', port=81)
 
