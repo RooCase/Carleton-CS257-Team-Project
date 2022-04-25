@@ -4,13 +4,13 @@ from Main_Project_Scripts.Listing_Schools_in_a_District import *
 
 app = Flask(__name__)
 
-@app.route('/districtschools/')
+@app.route('/district/')
 def home():
     return "To see the schools in a district, go to /districtschools/<District Name>."
 
 
 
-@app.route('/districtschools/<districtName>')
+@app.route('/district/<districtName>/schools')
 def print_district_schools(districtName):
     return listSchools(schools, districtName)
 
