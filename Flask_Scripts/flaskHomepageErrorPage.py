@@ -31,6 +31,9 @@ def homepage():
     - To access a list of districts, use the url extension "/list/districts"
     - To access a list of schools, use the url extension "/list/schools"
     - To access a list of schools within a specific district, use the url extension "/district/{districtName}/schools"
+    
+    - If you want to enter a school name to the URL, then write it with all the capital letters without spaces (ex.
+    AvalonSchool)
     """
 
 app.run(host='0.0.0.0', port=81)
