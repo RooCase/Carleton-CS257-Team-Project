@@ -22,13 +22,15 @@ def handle_not_found():
 def handle_method_not_allowed():
     return "This method is not allowed!", 405
 
-@app.route('/'):
+@app.route('/')
 def homepage():
     return \
     """Welcome! Here's a list of things you can do:
-    - To access an individual school's information, use the url extension "/school/<school_name>"
-    - To access an individual school's COVID data, use the url extension "/school/<school_name>/covid"
+    - To access an individual school's information, use the url extension "/school/{school_name}"
+    - To access an individual school's COVID data, use the url extension "/school/{school_name}/covid"
     - To access a list of districts, use the url extension "/list/districts"
     - To access a list of schools, use the url extension "/list/schools"
-    - To access a 
+    - To access a list of schools within a specific district, use the url extension "/district/{districtName}/schools"
     """
+
+app.run(host='0.0.0.0', port=81)

@@ -6,7 +6,11 @@ app = Flask(__name__)
 
 @app.route('/district/')
 def home():
-    return "To see the schools in a district, go to /districtschools/<District Name>."
+    return \
+    """
+    - To access a list of districts, use the url extension "/list/districts
+    - To access a list of schools within a specific district, use the url extension "/district/<districtName>/schools"
+    """
 
 
 
