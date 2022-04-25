@@ -1,6 +1,6 @@
 """
-Custom pages for error handling.
-Written by Artem Yushko
+Custom pages for error handling, and the homepage.
+Error handling written by Artem Yushko, homepage written by Roo Case
 """
 
 from flask import Flask
@@ -21,3 +21,14 @@ def handle_not_found():
 @app.errorhandler(werkzeug.exceptions.MethodNotAllowed)
 def handle_method_not_allowed():
     return "This method is not allowed!", 405
+
+@app.route('/'):
+def homepage():
+    return \
+    """Welcome! Here's a list of things you can do:
+    - To access an individual school's information, use the url extension "/school/<school_name>"
+    - To access an individual school's COVID data, use the url extension "/school/<school_name>/covid"
+    - To access a list of districts, use the url extension "/list/districts"
+    - To access a list of schools, use the url extension "/list/schools"
+    - To access a 
+    """
