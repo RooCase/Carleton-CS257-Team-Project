@@ -16,7 +16,7 @@ class TestListObjects(unittest.TestCase):
         self.app = app.test_client()
         schools, districts = setup()
         response = self.app.get('/list/schools', follow_redirects=True)
-        self.assertEqual(list_objects(schools), response.data)
+        self.assertEqual(list_objects(schools).strip("\n"), response.data)
 
     def test_district_lists(self):
         """
@@ -25,7 +25,7 @@ class TestListObjects(unittest.TestCase):
         self.app = app.test_client()
         schools, districts = setup()
         response = self.app.get('/list/districts', follow_redirects=True)
-        self.assertEqual(list_objects(districts), response.data)
+        self.assertEqual(list_objects(districts).strip("\n"), response.data)
 
 if __name__ == '__main__':
     unittest.main()
