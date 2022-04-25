@@ -1,5 +1,5 @@
 from flask import Flask
-from Main_Project_Scripts import *
+from main import setup
 from Main_Project_Scripts.Listing_Schools_in_a_District import *
 
 app = Flask(__name__)
@@ -16,6 +16,7 @@ def home():
 
 @app.route('/district/<districtName>/schools')
 def print_district_schools(districtName):
+    schools, district = setup()
     return listSchools(schools, districtName)
 
 
