@@ -1,0 +1,103 @@
+"""
+This is our amalgamated flask application, combined from all the files in the "Flask Scripts" folder.
+You can look in there for information about individual authors.
+Amalgamation created and tested by Roo Case.
+"""
+
+import re
+import werkzeug
+from flask import Flask, jsonify
+from Flask_Scripts import *
+from Main_Project_Scripts.Listing_Schools_in_a_District import listSchools
+from main import setup, get_weekly_data, importSchools, list_objects, find_school_info_by_name, \
+    find_district_info_by_name
+
+app = Flask(__name__)
+
+
+@app.errorhandler(werkzeug.exceptions.BadRequest)
+def handle_bad_request():
+    return 'Something went wrong on our side! Try another request.', 400
+
+
+@app.errorhandler(werkzeug.exceptions.NotFound)
+def handle_not_found():
+    return """Most likely, you have entered an incorrect school name! 
+    Remember: the correct address is capitalized name with no spaces (ex. Avalon School -> AvalonSchool)""", 404
+
+
+@app.errorhandler(werkzeug.exceptions.MethodNotAllowed)
+def handle_method_not_allowed():
+    return "This method is not allowed!", 405
+
+
+@app.route('/')
+def homepage():
+    return \
+        """Welcome! Here's a list of things you can do:
+        - To access an individual school's information, use the url extension "/school/{school_name}"
+        - To access an individual school's COVID data, use the url extension "/school/{school_name}/covid"
+        - To access a list of districts, use the url extension "/list/districts"
+        - To access a list of schools, use the url extension "/list/schools"
+        - To access a list of schools within a specific district, use the url extension "/district/{districtName}/schools"
+    
+        - If you want to enter a school name to the URL, then write it with all the capital letters without spaces (ex.
+        AvalonSchool)
+        """
+
+@app.route('/district/')
+def home():
+    return \
+    """
+    - To access a list of districts, use the url extension "/list/districts
+    - To access a list of schools within a specific district, use the url extension "/district/<districtName>/schools"
+    """
+
+@app.route('/district/<districtName>/schools')
+def print_district_schools(districtName):
+    schools, district = setup()
+    return listSchools(schools, districtName)
+
+
+@app.route('/district/<district_name>')
+def render_district_info_by_name(district_name):
+    """
+    This function is a modification of find_district_info_by_name function for Flask. Also, it calls setup so it might be a little slow.
+    :param: Name of a district. This parameter comes from the link the user types in the browser.
+    :return: Info about that district. "District Not Found" if there is no such district.
+    """
+    schools, districts = setup()
+    return find_district_info_by_name(districts, district_name)
+
+@app.route('/school/<school_name>')
+def print_school_info(school_name):
+    # adding spaces before capital letters
+    actual_name = re.sub(r"(\w)([A-Z])", r"\1 \2", school_name)
+    return find_school_info_by_name(importSchools(), actual_name)
+
+
+"""
+Function for getting school-specific detailed covid data.
+"""
+
+@app.route('/school/<school_name>/covid')
+def print_school_covid_data(school_name):
+    # adding spaces before capital letters
+    actual_name = re.sub(r"(\w)([A-Z])", r"\1 \2", school_name)
+    # converting pandas dataframe to JSON
+    df = get_weekly_data(importSchools(), actual_name)
+    df_list = df.values.tolist()
+    json_data = jsonify(df_list)
+    return json_data
+
+@app.route('/list/schools')
+def listSchools():
+    schools, districts = setup()
+    return list_objects(schools)
+
+@app.route('/list/districts')
+def listDisctricts():
+    schools, districts = setup()
+    return list_objects(districts)
+
+app.run(host='0.0.0.0', port=81)
