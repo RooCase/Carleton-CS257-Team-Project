@@ -17,7 +17,7 @@ def importSchools():
     :return: a list of schools
     """
     listOfSchools = []
-    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data/Minnesota_Schools_Modified.csv"))
+    parsedCSV = findIndividualGroups(findLines("Data/Minnesota_Schools_Modified.csv"))
     for group in parsedCSV:
         listOfSchools.append(createSchool(group))
     return listOfSchools
@@ -30,7 +30,7 @@ def importDistricts(schools):
     :return: a list of districts
     """
     listOfDistricts = []
-    parsedCSV = findIndividualGroups(findLines("/Users/roocase/Documents/CS257/team-project-team-a/Data/Minnesota_Districts_LearningModelData_Modified.csv"))
+    parsedCSV = findIndividualGroups(findLines("Data/Minnesota_Districts_LearningModelData_Modified.csv"))
 
     for group in parsedCSV:
         
