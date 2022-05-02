@@ -4,7 +4,7 @@ Written by
 class WeeklyModeTracker:
 
     def add_week(self, mode_list):
-        for ind, mode in enumerate(mode_list, start=1):
+        for ind, mode in enumerate(mode_list):
             self.learning_modes_for_grades[ind].append(mode)
 
     def get_weeks_for_grade(self, grade):
