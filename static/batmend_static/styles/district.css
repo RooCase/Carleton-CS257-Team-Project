@@ -1,0 +1,22 @@
+body:after {
+    background-image: url("../images/map_for_district.png");
+}
+
+section {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50% , -20%);  
+}
+
+table {
+    margin-top: 30px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    border: 1px solid black;
+    table-layout: fixed;
+    width: 120px;
+}
