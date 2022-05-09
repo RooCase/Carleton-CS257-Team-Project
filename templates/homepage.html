@@ -1,75 +1,49 @@
-<html lang="en"> <!-- all pages start and end with this tag -->
-<!-- Header information: links to external scripts and style files, other metadata about the page. -->
-<head>
-<!-- The title is mandatory. If you use tabs, the title appears in the page's tab in your browser.-->
-<title>MN Schools</title>
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/datastyle.css') }}">
+<html lang="en">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
-  </script>
+  <head>
+    <!-- Title -->
+    <title>MN Schools</title>
+    <!-- Making Flask comprehend the css file -->
+<!--    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='/batmend_static/styles/mainpage.css') }}">-->
+    <link rel="stylesheet" href="../static/batmend_static/styles/mainpage.css">
+  </head>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
-  </script>
+  <body>
+    <h1>
+      <div class="top-text" style="text-align:center">
+        Schools in Minnesota
+      </div>
+    </h1>
 
-  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
-  rel="datastyle" type="text/css" />
-</head>
-<!-- The body consists of the visible parts of the web page. -->
-<body>
-<!-- <img src="https://world-schools.com/wp-content/uploads/2021/03/Top-Online-High-Schools-USA-2000x746-1-1536x573.jpg" alt="Stock image of a school"/> -->
-<h1>
-  <div class="top-image">
-  <div class="top-text">
-  <span style="background-color: #808080"> Schools in Minnesota</span>
-  </div>
-  </div>
-</h1>
-<!-- <div><em>Top nav</em></div> -->
+    <!-- Action buttons that lead to separate pages -->
+    <div class="btn-group" style="width:100%">
+      <button style="width:33%">Find the perfect place to study</button>
+      <button style="width:33%">See all districts</button>
+      <button style="width:33%">See all schools</button>
+    </div>
 
-<!-- You'll notice that I use div tags throughout. They don't do anything yet. Think of them as ways to group entities logically. I'll apply different styles to them later using CSS. -->
-<div style="text-align:center">
-<h2>Search Specific School</h2>
-<p>If you want to find information about a specific school, start typing its name in the field below!</p>
-<p>As for the test version, please start typing "Dummy School"</p>
-<div class="topnav">
-<form method="POST">
-<input name="text" id="tags" placeholder="Search...">
-  <script>
-  $( function() {
-    var availableTags = [
-        {% for school in schools %}
-            "{{school}}",
-        {% endfor %}
-    ];
-    $( "#tags" ).autocomplete({
-      source: availableTags
-    });
-  } );
-  </script>
-<input type="submit">
-</form>
-</div>
-</div>
+    <!-- Description of the website -->
+    <div>
+      <h2 style="text-align:center">Who are we and what we do</h2>
+    </div>
 
-<div>
-<h2 style="text-align:center">Who are we and what we do</h2>
-<img src="https://www.mnasa.org/uploads/4/7/7/9/47793163/masa_regions_numbers.jpg" style="float:left" alt="Map of schools in Minnesota"/>
-<p><a href="https://www.mnasa.org" style="float:right">Image source</a></p>
-</div>
-<div.highlight>
-<ul style="margin-left:500px">
-<li>We are MN Schools, and we are here to help you imprison your offspring!</li>
-<li>You can use our smart filters and pick the most suitable school.</li>
-<li>There is an option to search a specific school as well.</li>
-<li>To try this function out, start typing "Dummy School" in the search field!</li>
-</ul>
-</div.highlight>
-<br>
-<div style="text-align:center">
-<h2>Data source</h2>
-<p>Data retrieved from <a href="https://www.covidschooldatahub.com/for_researchers">"CovidSchoolDataHub"</a> on 3 April 2022.</p>
-<p><a href="https://www.covidschooldatahub.com/for_researchers/copyright">Data usage policy</a></p>
-</div>
-<!-- always end your page with these tags! -->
-</body>
+    <!-- How to use -->
+    <div.highlight>
+      <ul style="margin-left:500px">
+        <li>We are MN Schools, and we want to help you find the most suitable school!</li>
+        <li>You can use our smart filters and pick the best-fitting place to study.</li>
+        <li>If you want to see all schools or districts available, then click on "see all schools/districts".</li>
+      </ul>
+    </div.highlight>
+
+    <br>
+
+    <!-- Data links and legal stuff -->
+    <div>
+      <h2>Data source</h2>
+      <p>Data retrieved from <a href="https://www.covidschooldatahub.com/for_researchers">"CovidSchoolDataHub"</a> on 3 April 2022.</p>
+      <p><a href="https://www.covidschooldatahub.com/for_researchers/copyright">Data usage policy</a></p>
+    </div>
+  </body>
+
 </html>

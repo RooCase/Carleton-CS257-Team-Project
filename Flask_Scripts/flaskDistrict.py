@@ -1,21 +1,16 @@
-from main import setup
+from Main_Project_Scripts import *
 from Main_Project_Scripts.Listing_Schools_in_a_District import *
 
 app = Flask(__name__)
 
-@app.route('/district/')
+@app.route('/districtschools/')
 def home():
-    return \
-    """
-    - To access a list of districts, use the url extension "/list/districts
-    - To access a list of schools within a specific district, use the url extension "/district/<districtName>/schools"
-    """
+    return "To see the schools in a district, go to /districtschools/<District Name>."
 
 
 
-@app.route('/district/<districtName>/schools')
+@app.route('/districtschools/<districtName>')
 def print_district_schools(districtName):
-    schools, district = setup()
     return listSchools(schools, districtName)
 
 
