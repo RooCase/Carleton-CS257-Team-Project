@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<head>
+  <title>District Data</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='batmend_static/district.css') }}">
+  <! Thanks to Artem and this stackoverflow article for helping me figure this out: https://stackoverflow.com/questions/22259847/application-not-picking-up-css-file-flask-python>
+</head>
+
+<body>
+  <div class="header">
+    <div class="nav">
+      <h1>MN Schools COVID19 Data</h1>
+      <ul>
+        <li><a href="/District/test">District</a></li>
+        <li><a href="#Schools">Schools</a></li>
+        <li><a href="#Statewide">Statewide</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="Highlight">
+    <ul>
+      <li>Data source: <a href="https://www.covidschooldatahub.com/for_researchers"> COVID-19 School Data Hub, School Learning Model Database </a></li>
+      <li>Date downloaded - 04/05/2022</li>
+    </ul>
+  </div>
+  <h2>{{name}}</h2>
+  <div class="mainDataHeader">
+    <details>
+      <summary></summary>
+      <ul>
+        <h2>Enrollment: {{enrollment}} students</h2>
+        <details>
+          <div class="CovidData">
+          <summary>List of schools</summary>
+          <ul>
+            {% for name in schoolNames %}
+            <li>{{name}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        </details>
+        <div class="CovidData">
+          <details>
+            <summary>COVID Data</summary>
+            <ul>
+              <! inspired from this post https://stackoverflow.com/questions/1465249/get-lengths-of-a-list-in-a-jinja2-template>
+                {% for i in range(weeks|length) %}
+                <div class="Weekly">
+                  <details>
+                    <summary>Week {{i+1}}</summary>
+                    {% for data in weeks[i] %}
+                    <li>{{data}}</li>
+                    {% endfor %}
+                  </details>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </details>
+    </ul>
+  </div>
+  </details>
+</body>
+  </html>
