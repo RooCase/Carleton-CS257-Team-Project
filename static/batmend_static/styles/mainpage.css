@@ -1,0 +1,19 @@
+body:after {
+    background-image: url("../images/map_for_mainpage.png");
+}
+
+.searchbar {
+    padding: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input {
+    font-size:24px;
+}
+
+input[type="text"] {
+    width: 500px;  
+}
