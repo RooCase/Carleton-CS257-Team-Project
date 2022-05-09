@@ -3,6 +3,8 @@ body {
     font-size: 20px;
     margin: 0;
     font-family: 'Open Sans', sans-serif;
+    background-color: #cccccc;
+    box-shadow:inset 0 0 0 2200px rgba(255, 255, 255, 0.9);
 }
 
 body:after {
