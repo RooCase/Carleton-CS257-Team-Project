@@ -1,5 +1,5 @@
 from flask import *
-from main import find_district_info_by_name, setup
+from Main_Project_Scripts.main import find_district_info_by_name, setup
 
 app = Flask(__name__)
 

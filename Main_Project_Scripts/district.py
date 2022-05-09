@@ -1,9 +1,9 @@
 """
 Written by
 """
-from Main_Project_Scripts.weekly_mode_tracker import WeeklyModeTracker
+import weekly_mode_tracker
 
-class District(WeeklyModeTracker):
+class District:
     def __init__(self, name, enrollment, school_list, grades):
         self.name = name
         self.size = enrollment

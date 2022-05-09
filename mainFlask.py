@@ -9,7 +9,7 @@ import werkzeug
 from flask import Flask, jsonify
 from Flask_Scripts import *
 from Main_Project_Scripts.Listing_Schools_in_a_District import listSchools
-from main import setup, get_weekly_data, importSchools, list_objects, find_school_info_by_name, \
+from Main_Project_Scripts.main import setup, get_weekly_data, importSchools, list_objects, find_school_info_by_name, \
     find_district_info_by_name
 
 app = Flask(__name__)

@@ -3,7 +3,7 @@ Tests by Batmend
 """
 import unittest
 
-from Main_Project_Scripts import district, school
+import district, school
 import main
 
 dummy_grade_data = {'1': [], '2': [], '3': [], '4': [], '5': [], '6': [],

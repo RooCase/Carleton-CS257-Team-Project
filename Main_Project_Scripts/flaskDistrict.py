@@ -1,4 +1,4 @@
-from main import setup
+from Main_Project_Scripts.main import setup
 from Main_Project_Scripts.Listing_Schools_in_a_District import *
 
 app = Flask(__name__)

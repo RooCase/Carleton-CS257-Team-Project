@@ -3,7 +3,7 @@ Deals with all the Flask operations for the School object.
 Written by Roo Case
 """
 from flask import Flask, jsonify
-from main import setup, list_objects
+from Main_Project_Scripts.main import setup, list_objects
 
 app = Flask(__name__)
 

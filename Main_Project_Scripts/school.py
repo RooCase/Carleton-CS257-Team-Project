@@ -2,7 +2,7 @@
 Initializing the School object and creating all the basic getters and setters for it.
 Written by Artem Yushko.
 """
-from Main_Project_Scripts import weekly_mode_tracker
+import weekly_mode_tracker
 import pandas as pd
 
 class School(weekly_mode_tracker.WeeklyModeTracker):

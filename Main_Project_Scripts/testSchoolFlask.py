@@ -3,7 +3,7 @@ Tests the flask scripts concerned with the School objects.
 Written by Artem Yushko
 """
 from Main_Project_Scripts import flaskSchool
-from main import get_weekly_data
+from Main_Project_Scripts.main import get_weekly_data
 import unittest
 
 app = flaskSchool.app

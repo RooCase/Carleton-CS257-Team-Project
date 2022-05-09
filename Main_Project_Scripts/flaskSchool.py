@@ -4,7 +4,7 @@ Written by Artem Yushko
 """
 
 from flask import Flask, jsonify
-from main import find_school_info_by_name, importSchools, get_weekly_data
+from Main_Project_Scripts.main import find_school_info_by_name, importSchools, get_weekly_data
 import re
 
 app = Flask(__name__)

@@ -3,7 +3,7 @@ Tests the flask scripts concerned with the School objects.
 Written by Roo Case, with help from Artem Yushko in understanding how to properly test Flask stuff with unittests.
 """
 from Main_Project_Scripts import flaskList
-from main import list_objects, setup
+from Main_Project_Scripts.main import list_objects, setup
 import unittest
 
 app = flaskList.app
