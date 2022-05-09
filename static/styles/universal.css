@@ -1,8 +1,8 @@
 body {
+    background-image: url("../images/map_for_mainpage.png");
     font-size: 20px;
     margin: 0;
     font-family: 'Open Sans', sans-serif;
-    position: relative;
 }
 
 body:after {
@@ -13,8 +13,7 @@ body:after {
     left: 0;
     bottom: 0;
     right: 0;
-    position: absolute;
-    z-index: -1;  
+    z-index: -1;
 }
 
 header, footer, section {
