@@ -11,45 +11,6 @@ body {
     box-shadow:inset 0 0 0 2200px rgba(255, 255, 255, 0.8);
 }
 
-body:after {
-    content: "";
-    background-color: white;
-    opacity: 0.4;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-}
-
-header, footer, section {
-    position: absolute;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-align: center;
-}
-
-header {
-    left: 50%;
-    transform: translate(-50%, 0%);
-}
-
-footer {
-    left: 50%;
-    top: 100%;
-    transform: translate(-50%, -100%);
-}
-
-
-header, footer, section {
-    background-color: rgb(257, 257, 257, 0.7);
-}
-
-
-header, footer {
-    width: 600px;
-}
-
 /* Special attributes and properties for the heading */
 .heading {
   display: block;
