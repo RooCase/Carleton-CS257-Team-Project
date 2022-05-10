@@ -99,7 +99,10 @@ def print_school_covid_data(school_name):
     return json_data
 
 @app.route('/list/schools')
+
+
 def listSchools():
+    schools, districts = setup()
     enrollment, charter, grade = get_request_args()
     return render_template('filter_school.html', schools=filterSchools(schools, enrollment, charter, grade))
     
