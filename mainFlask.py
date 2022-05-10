@@ -6,7 +6,7 @@ Amalgamation created and tested by Roo Case.
 
 import re
 import werkzeug
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request, render_template
 from Flask_Scripts import *
 from Main_Project_Scripts.Listing_Schools_in_a_District import listSchools
 from main import setup, get_weekly_data, importSchools, list_objects, find_school_info_by_name, \
@@ -100,8 +100,66 @@ def print_school_covid_data(school_name):
 
 @app.route('/list/schools')
 def listSchools():
-    schools, districts = setup()
-    return list_objects(schools)
+    enrollment, charter, grade = get_request_args()
+    return render_template('filter_school.html', schools=filterSchools(schools, enrollment, charter, grade))
+    
+def get_request_args():
+    enrollment = "select"
+    charter = "select"
+    grade = "select"
+    if "enrollment" in request.args:
+        enrollment = request.args['enrollment']
+    if "charter" in request.args:
+        charter = request.args['charter']
+    if "grade" in request.args:
+        grade = request.args['grade']
+    return enrollment, charter, grade
+    
+def filterSchoolsByCharter(myschools, charter):
+    if charter == "select":
+        return myschools
+    ans = []
+    for school in myschools:
+        if school.charter == charter:
+            ans.append(school)
+    return ans
+
+def filterSchoolsByEnrollment(myschools, enrollment):
+    l = 0
+    r = 0
+    if enrollment == "select":
+        return myschools
+    if enrollment == "0-99":
+        l = 0
+        r = 99
+    if enrollment == "100-999":
+        l = 100
+        r = 999
+    if enrollment == "1000-Inf":
+        l = 1000
+        r = 100000
+
+    ans = []
+    for school in myschools:
+        if l <= int(school.size) and int(school.size) <= r:
+            ans.append(school)
+    return ans
+
+def filterSchoolsByGrade(myschools, grade):
+    if grade == "select":
+        return myschools
+    ans = []
+    for school in myschools:
+        if grade in school.get_available_grades():
+            ans.append(school)
+    return ans
+
+def filterSchools(myschools, enrollment, charter, grade):
+    print("Yooo this is " + grade)
+    myschools = filterSchoolsByEnrollment(myschools, enrollment)
+    myschools = filterSchoolsByCharter(myschools, charter)
+    myschools = filterSchoolsByGrade(myschools, grade)
+    return myschools
 
 @app.route('/list/districts')
 def listDisctricts():
@@ -109,3 +167,4 @@ def listDisctricts():
     return list_objects(districts)
 
 app.run(host='0.0.0.0', port=81)
+
