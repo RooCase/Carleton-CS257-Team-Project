@@ -3,51 +3,63 @@
 
 /* General body features, such as font or background */
 body {
-    background-image: url("../images/map_for_mainpage.png");
-    font-size: 20px;
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #cccccc;
-    box-shadow:inset 0 0 0 2200px rgba(255, 255, 255, 0.8);
+  background-image: url("../images/map_for_mainpage.png");
+  font-size: 20px;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow:inset 0 0 0 2200px rgba(255, 255, 255, 0.8);
+}
+
+.container {
+  display: flex;
+}
+
+.column_view {
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Special attributes and properties for the heading */
 .heading {
-  display: block;
-  font-size: 60px;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  margin-left: 0;
-  margin-right: 0;
-  font-weight: bold;
+display: block;
+font-size: 60px;
+margin-top: 2em;
+margin-bottom: 2em;
+margin-left: 0;
+margin-right: 0;
+font-weight: bold;
 }
 
 /* Class for large action buttons used for transitions to the other pages */
 .button {
-  background-color: #7393B3; /* Blue Gray */
-  border: none;
-  color: white;
-  /*  */
-  padding: 100px 50px;
-  border-radius: 8px;
-  text-align: center;
-  text-decoration: shadow;
-  display: inline-block;
-  font-size: 30px;
-  margin: 23px 23px;
-  cursor: pointer;
-  /* Changing color when hovered over */
-  transition-duration: 0.2s;
+background-color: #7393B3; /* Blue Gray */
+border: none;
+color: white;
+/*  */
+padding: 100px 50px;
+border-radius: 8px;
+text-align: center;
+text-decoration: shadow;
+display: inline-block;
+font-size: 30px;
+margin: 23px 23px;
+cursor: pointer;
+/* Changing color when hovered over */
+transition-duration: 0.2s;
 }
 
 /* Hovering over the button as action */
 .button:hover {
-  background-color: #008CBA; /* Blue */
+background-color: #008CBA; /* Blue */
 }
 
 .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: blue;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: blue;
 }
+
+/* .school_filters_and_resulting_schools {
+  justify-content: center
+} */
