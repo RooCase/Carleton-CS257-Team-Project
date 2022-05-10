@@ -6,9 +6,10 @@ Amalgamation created and tested by Roo Case.
 
 import re
 import werkzeug
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request, render_template
 from Flask_Scripts import *
 from Main_Project_Scripts.Listing_Schools_in_a_District import listSchools
+from Main_Project_Scripts import filter_school
 from main import setup, get_weekly_data, importSchools, list_objects, find_school_info_by_name, \
     find_district_info_by_name
 
@@ -99,9 +100,12 @@ def print_school_covid_data(school_name):
     return json_data
 
 @app.route('/list/schools')
+
+
 def listSchools():
     schools, districts = setup()
-    return list_objects(schools)
+    enrollment, charter, grade = filter_school.get_request_args()
+    return render_template('filter_school.html', schools=filter_school.filter_schools(schools, enrollment, charter, grade))
 
 @app.route('/list/districts')
 def listDisctricts():
@@ -109,3 +113,4 @@ def listDisctricts():
     return list_objects(districts)
 
 app.run(host='0.0.0.0', port=81)
+

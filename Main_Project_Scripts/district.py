@@ -1,5 +1,6 @@
 """
-Written by
+This file contains definition of a District class.
+Written by Batmend Batsaikhan.
 """
 from Main_Project_Scripts.weekly_mode_tracker import WeeklyModeTracker
 
