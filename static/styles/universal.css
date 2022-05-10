@@ -45,3 +45,10 @@ header, footer, section {
 header, footer {
     width: 600px;
 }
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: blue;
+}
