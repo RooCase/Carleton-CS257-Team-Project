@@ -4,8 +4,8 @@
     <!-- Title -->
     <title>MN Schools</title>
     <!-- Making Flask comprehend the css file -->
-   <!--<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='/batmend_static/styles/mainpage.css') }}"> -->
-    <link rel="stylesheet" href="../static/styles/universal.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='/styles/universal.css') }}">
+<!--    <link rel="stylesheet" href="../static/styles/universal.css">-->
     <style>
       .datausage {
         border radius: 2px;
@@ -33,9 +33,9 @@
 
     <!-- Action buttons that lead to separate pages -->
     <div style="width:100%">
-      <button class="button" style="width:30%">Use our smart search</button>
+      <button class="button" style="width:30%" onclick="/District/test">Use our smart search</button>
       <button class="button" style="width:30%">See all districts</button>
-      <button class="button" style="width:30%">See all schools</button>
+      <button class="button" style="width:30%" onclick="#Schools">See all schools</button>
     </div>
 
     <!-- Description of the website and how to use -->
