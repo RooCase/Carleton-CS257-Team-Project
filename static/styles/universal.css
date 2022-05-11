@@ -3,11 +3,27 @@
 
 /* General body features, such as font or background */
 body {
-  background-image: url("../images/map_for_mainpage.png");
-  font-size: 20px;
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  box-shadow:inset 0 0 0 2200px rgba(255, 255, 255, 0.8);
+    background-image: url("../images/map_for_mainpage.png");
+    font-size: 20px;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #cccccc;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Highlighting the text over the image */
+.block {
+    border radius: 2px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    margin-left: 320px;
+    margin-right: 320px;
+    border: 1px solid #000000;
+    /* The shadow itself */
+    box-shadow: inset 0 0 0 1000px rgba(257,257,257,.7);
+    padding: 20px;
 }
 
 .container {
