@@ -77,7 +77,7 @@ def render_district_info_by_name(district_name):
                            name=selected.getName(),
                            enrollment=selected.getSize(),
                            schoolNames=schoolNameList,
-                           weeks= selected.getLearningModeWeekly()
+                           weeks=selected.getLearningModeWeekly()
                            )
 
 
@@ -89,9 +89,9 @@ def print_school_info(school_name):
 
     return render_template('school.html',
                            name=selected.name(),
-                           charter = selected.charter,
+                           charter=selected.charter,
                            enrollment=selected.size,
-                           weeks= selected.get_covid_data()
+                           weeks=selected.get_covid_data()
                            )
 
 
