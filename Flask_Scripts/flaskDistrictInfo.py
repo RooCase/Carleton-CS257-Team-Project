@@ -1,3 +1,7 @@
+"""This file contains function for displaying district information.
+Written by Batmend.
+"""
+
 from flask import *
 from main import find_district_info_by_name, setup
 

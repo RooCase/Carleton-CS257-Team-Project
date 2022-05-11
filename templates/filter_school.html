@@ -1,0 +1,58 @@
+<html lang="en"> 
+    <head>
+        <title>Find School</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/universal.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+    </head>
+    
+    <body>
+      <section class="school_filters_and_resulting_schools container column_view">
+        <article class="school_filters">
+          <form action="/list/schools">
+            <label for="enrollment">Enrollment</label>
+            <select name="enrollment" id="enrollment">
+              <option value="select">--Select--</option>
+              <option value="0-99">0-100</option>
+              <option value="100-999">100-1000</option>
+              <option value="1000-inf">1000-Inf</option>
+            </select>
+    
+            <label for="charter">Charter</label>
+            <select name="charter" id="charter">
+              <option value="select">--Select--</option>
+              <option value="charter">Charter</option>
+              <option value="not charter">Regular</option>
+            </select>
+    
+            <label for="grade">Grades</label>
+            <select name="grade" id="grade">
+              <option value="select">--Select--</option>
+              <option value="K">K</option>
+              <option value="Gr1">Grade 1</option>
+              <option value="Gr2">Grade 2</option>
+              <option value="Gr3">Grade 3</option>
+              <option value="Gr4">Grade 4</option>
+              <option value="Gr5">Grade 5</option>
+              <option value="Gr6">Grade 6</option>
+              <option value="Gr7">Grade 7</option>
+              <option value="Gr8">Grade 8</option>
+              <option value="Gr9">Grade 9</option>
+              <option value="Gr10">Grade 10</option>
+              <option value="Gr11">Grade 11</option>
+              <option value="Gr12">Grade 12</option>
+            </select>
+            
+            <input type="submit" value="Submit" />
+          </form>  
+        </article>
+
+        <article class="resulting_schools">
+          <ul>
+            {%for school in schools%}
+            <li><a href ="/school/"+school.name)>{{ school.name }}</a></li>
+            {%endfor%}
+          </ul>
+        </article>
+      </section>
+    </body>
+</html>
