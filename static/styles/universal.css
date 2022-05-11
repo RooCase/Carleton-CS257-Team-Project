@@ -63,3 +63,17 @@ background-color: blue;
 /* .school_filters_and_resulting_schools {
   justify-content: center
 } */
+/*
+Header code
+*/
+.header {
+  padding: 0 1em;
+  background-color: blue;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: blue;
+}

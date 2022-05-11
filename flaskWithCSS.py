@@ -10,6 +10,7 @@ from flask import Flask, jsonify, request, render_template
 from Flask_Scripts import *
 from Main_Project_Scripts.Listing_Schools_in_a_District import listSchools
 from Main_Project_Scripts import filter_school
+from Main_Project_Scripts.main import find_object_by_name
 from main import setup, get_weekly_data, importSchools, list_objects, find_school_info_by_name, \
     find_district_info_by_name
 
@@ -42,7 +43,7 @@ def handle_method_not_allowed():
 
 @app.route('/')
 def homepage():
-    return render_template(homepage)
+    return render_template("homepage.html")
 
 
 @app.route('/district/')
@@ -68,11 +69,14 @@ def render_district_info_by_name(district_name):
     :return: Info about that district. "District Not Found" if there is no such district.
     """
     schools, districts = setup()
-    selected = find_district_info_by_name(districts, district_name)
+    selected = find_object_by_name(districts, district_name)
+    schoolNameList =[]
+    for school in selected.getSchoolList():
+        schoolNameList.append(school.name)
     return render_template('district.html',
-                           name=selected.getName,
-                           enrollment=selected.getSize,
-                           schoolNames=selected.getSchoolList,
+                           name=selected.getName(),
+                           enrollment=selected.getSize(),
+                           schoolNames=schoolNameList,
                            weeks= selected.getLearningModeWeekly()
                            )
 

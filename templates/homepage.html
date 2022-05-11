@@ -4,20 +4,31 @@
     <!-- Title -->
     <title>MN Schools</title>
     <!-- Making Flask comprehend the css file -->
-   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='/batmend_static/styles/mainpage.css') }}">
-    <!-- <link rel="stylesheet" href="../static/styles/universal.css"> !-->
+   <!--<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='/batmend_static/styles/mainpage.css') }}"> -->
+    <link rel="stylesheet" href="../static/styles/universal.css">
   </head>
 
   <body>
+  <div class="header">
+      <h1>MN Schools COVID19 Data</h1>
+    <div class = "headerNav">
+      <ul>
+        <li><a href="/District/test">Search Districts</a></li>
+        <li><a href="#Schools">Search Schools</a></li>
+      </ul>
+    </div>
+  </div>xs
+
+
     <h1 class="heading" style="text-align:center">
       Schools in Minnesota
     </h1>
 
     <!-- Action buttons that lead to separate pages -->
     <div style="width:100%">
-      <button class="button" style="width:30%">Use our smart search</button>
-      <button class="button" style="width:30%">See all districts</button>
-      <button class="button" style="width:30%">See all schools</button>
+      <button class="button" style="width:30%"><a href="/search/schools">Filter schools</a></button>
+      <button class="button" style="width:30%"><a href="/list/districts">See all districts</a></button>
+      <button class="button" style="width:30%"><a href="/list/schools">See all schools</a></button>
     </div>
 
     <!-- Description of the website -->
