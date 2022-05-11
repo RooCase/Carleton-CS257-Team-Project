@@ -23,7 +23,7 @@ body {
     border: 1px solid #000000;
     /* The shadow itself */
     box-shadow: inset 0 0 0 1000px rgba(257,257,257,.7);
-    padding: 20px;
+
 }
 
 .container {
@@ -53,7 +53,6 @@ body {
   border: none;
   color: white;
   /* Positioning the buttons in the right spots */
-  padding: 100px 50px;
   border-radius: 8px;
   text-align: center;
   text-decoration: shadow;
@@ -78,7 +77,6 @@ body {
 Header code
 */
 .header {
-  padding: 0 1em;
   background-color: blue;
 }
 .nav {
@@ -94,7 +92,6 @@ background-color: blue;
   border: none;
   color: white;
   /* Positioning the buttons in the right spots */
-  padding: 10px 50px;
   border-radius: 8px;
   text-align: center;
   text-decoration: shadow;
@@ -104,5 +101,6 @@ background-color: blue;
   cursor: pointer;
   /* Changing color when hovered over */
   transition-duration: 0.2s;
+  width:30%
 }
 
