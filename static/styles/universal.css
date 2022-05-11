@@ -76,15 +76,36 @@ body {
 /*
 Header code
 */
-.header {
-  background-color: blue;
+
+.logo_text {
+  margin: 0px;
+  color: white;
+  text-decoration: none;
+  font-size: 2em;
+  font-weight: bold;
 }
+
 .nav {
 display: flex;
 justify-content: space-between;
 align-items: center;
 background-color: blue;
 }
+
+.navButton {
+  font-size: 20px;
+  width: 200px;
+}
+
+.header {
+  padding: 5px;
+  background-color: #7393B3;
+}
+
+
+
+
+
 
 /*Buttons for header nav buttons*/
 .button {
