@@ -17,12 +17,14 @@
   </head>
 
   <body>
+
     <div class="header">
-        <h1>MN Schools COVID19 Data</h1>
+        <a href="/"> <h1>MN Schools COVID19 Data</h1> </a>
       <div class = "headerNav">
         <ul>
-          <li><a href="/District/test">Search Districts</a></li>
-          <li><a href="#Schools">Search Schools</a></li>
+          <a href="/District/test"><button class="navButton" style="width:30%">Use our smart search</button></a>
+          <a href="/list/districts"><button class="navButton" style="width:30%">See all districts</button></a>
+          <a href="/list/schools"><button class="navButton" style="width:30%">See all schools</button></a>
         </ul>
       </div>
     </div>
@@ -33,9 +35,9 @@
 
     <!-- Action buttons that lead to separate pages -->
     <div style="width:100%">
-      <button class="button" style="width:30%" onclick="/District/test">Use our smart search</button>
-      <button class="button" style="width:30%" onclick="/list/districts">See all districts</button>
-      <button class="button" style="width:30%" onclick="/list/schools">See all schools</button>
+      <a href="/District/test"><button class="button" style="width:30%">Use our smart search</button></a>
+      <a href="/list/districts"><button class="button" style="width:30%">See all districts</button></a>
+      <a href="/list/schools"><button class="button" style="width:30%">See all schools</button></a>
     </div>
 
     <!-- Description of the website and how to use -->

@@ -70,12 +70,6 @@ body {
   background-color: #008CBA; /* Blue */
 }
 
-.nav {
-display: flex;
-justify-content: space-between;
-align-items: center;
-background-color: blue;
-}
 
 /* .school_filters_and_resulting_schools {
   justify-content: center
@@ -87,3 +81,28 @@ Header code
   padding: 0 1em;
   background-color: blue;
 }
+.nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: blue;
+}
+
+/*Buttons for header nav buttons*/
+.button {
+  background-color: #7393B3; /* Blue Gray */
+  border: none;
+  color: white;
+  /* Positioning the buttons in the right spots */
+  padding: 10px 50px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: shadow;
+  display: inline-block;
+  font-size: 30px;
+  margin: 23px 23px;
+  cursor: pointer;
+  /* Changing color when hovered over */
+  transition-duration: 0.2s;
+}
+

@@ -88,7 +88,7 @@ def print_school_info(school_name):
     selected = find_object_by_name(importSchools(), actual_name)
 
     return render_template('school.html',
-                           name=selected.name(),
+                           name=selected.name,
                            charter=selected.charter,
                            enrollment=selected.size,
                            weeks=selected.get_covid_data()
