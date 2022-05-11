@@ -6,6 +6,14 @@
     <!-- Making Flask comprehend the css file -->
    <!--<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='/batmend_static/styles/mainpage.css') }}"> -->
     <link rel="stylesheet" href="../static/styles/universal.css">
+    <style>
+      .datausage {
+        border radius: 2px;
+        margin-bottom: 50px;
+        box-shadow: inset 0 0 0 1000px rgba(257,257,257,.7);
+        padding: 20px;
+      }
+    </style>
   </head>
 
   <body>
@@ -31,14 +39,10 @@
       <button class="button" style="width:30%"><a href="/list/schools">See all schools</a></button>
     </div>
 
-    <!-- Description of the website -->
-    <div>
+    <!-- Description of the website and how to use -->
+    <div class="block">
       <h2 style="text-align:center">Who are we and what we do</h2>
-    </div>
-
-    <!-- How to use -->
-    <div>
-      <ul style="margin-left:500px">
+      <ul style="text-align:left">
         <li>We are MN Schools, and we want to help you find the most suitable school!</li>
         <li>You can use our smart filters and pick the best-fitting place to study.</li>
         <li>If you want to see all schools or districts available, then click on "see all schools/districts".</li>
@@ -48,7 +52,7 @@
     <br>
 
     <!-- Data links and legal stuff -->
-    <div>
+    <div class="datausage">
       <h2>Data source</h2>
       <p>Data retrieved from <a href="https://www.covidschooldatahub.com/for_researchers">"CovidSchoolDataHub"</a> on 3 April 2022.</p>
       <p><a href="https://www.covidschooldatahub.com/for_researchers/copyright">Data usage policy</a></p>

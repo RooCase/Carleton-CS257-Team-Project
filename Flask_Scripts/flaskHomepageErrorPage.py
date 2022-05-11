@@ -33,8 +33,7 @@ def handle_method_not_allowed():
 
 @app.route('/')
 def homepage():
-    return \
-    """Welcome! Here's a list of things you can do:
+    return """Welcome! Here's a list of things you can do:
     - To access an individual school's information, use the url extension "/school/{school_name}"
     - To access an individual school's COVID data, use the url extension "/school/{school_name}/covid"
     - To access a list of districts, use the url extension "/list/districts"
