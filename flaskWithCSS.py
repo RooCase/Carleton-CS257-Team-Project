@@ -85,7 +85,14 @@ def render_district_info_by_name(district_name):
 def print_school_info(school_name):
     # adding spaces before capital letters
     actual_name = re.sub(r"(\w)([A-Z])", r"\1 \2", school_name)
-    return find_school_info_by_name(importSchools(), actual_name)
+    selected = find_object_by_name(importSchools(), actual_name)
+
+    return render_template('school.html',
+                           name=selected.name(),
+                           charter = selected.charter,
+                           enrollment=selected.size,
+                           weeks= selected.get_covid_data()
+                           )
 
 
 """
