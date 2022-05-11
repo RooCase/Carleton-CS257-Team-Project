@@ -7,7 +7,7 @@ here, as well as the helper functions that are a part of that.
 """
 
 import sys
-from csvManipulation import findIndividualGroups, findLines, createSchool, createDistrict
+from Main_Project_Scripts.csvManipulation import findIndividualGroups, findLines, createSchool, createDistrict
 
 def importSchools():
     """
