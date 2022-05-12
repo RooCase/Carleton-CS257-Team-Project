@@ -63,12 +63,10 @@ School name: {self.name}\nThis is a {self.charter} school with a student body of
                 i = 0
                 row = []
                 while i < len(self.grades[grade]):
-                    row.append(self.grades[grade][i])
+                    row.append(f"Week {i} Grade {grade}: " + str(self.grades[grade][i]))
                     i += 1
                 matrix.append(row)
-        # creating the matrix
-        df = pd.DataFrame(matrix, columns=col_names, index=row_names)
-        return df
+        return matrix
 
     # getting the length of the school year
     def get_school_year(self):
