@@ -91,7 +91,7 @@ def print_school_info(school_name):
                            name=selected.name,
                            charter=selected.charter,
                            enrollment=selected.size,
-                           weeks=selected.get_covid_data()
+                           weeks=selected.grades
                            )
 
 

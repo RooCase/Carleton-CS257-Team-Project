@@ -6,15 +6,13 @@
     </head>
     
     <body>
-        <div class="header">
-        <a href="/"> <h1>MN Schools COVID19 Data</h1> </a>
-      <div class = "headerNav">
-        <ul>
-          <a href="/District/test"><button class="navButton" Use our smart search</button></a>
-          <a href="/list/districts"><button class="navButton">See all districts</button></a>
+    <div class="header nav">
+      <span><a class="logo_text" href="/"> MN Schools COVID19 Data </a></span>
+      <span class = "headerNav">
+          <a href="/District/test"><button class="navButton">Use smart search</button></a>
+          <a href="/list/districts"><button class="navButton" >See all districts</button></a>
           <a href="/list/schools"><button class="navButton">See all schools</button></a>
-        </ul>
-      </div>
+      </span>
     </div>
       <section class="school_filters_and_resulting_schools container column_view">
         <article class="school_filters">
@@ -59,7 +57,7 @@
         <article class="resulting_schools">
           <ul>
             {%for school in schools%}
-            <li><a href ="/school/"+school.name)>{{ school.name }}</a></li>
+            <li><a href ="{{'/school/'+school.name}}">{{ school.name }}</a></li>
             {%endfor%}
           </ul>
         </article>

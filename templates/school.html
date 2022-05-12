@@ -1,54 +1,60 @@
 <!DOCTYPE html>
+<!--
+Datafile for individual schools
+Written by Roo Case and Artem Yushko
+-->
 
 <head>
   <title>School Data</title>
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='/styles/universal.css') }}">
+  <!-- Connecting the file to Flask -->
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='/styles/universal.css') }}">
   <!-- Thanks to Artem and this stackoverflow article for helping me figure this out: https://stackoverflow.com/questions/22259847/application-not-picking-up-css-file-flask-python -->
 </head>
 
 <body>
-  <div class="header">
-    <div class="nav">
-      <h1>MN Schools COVID19 Data</h1>
-      <ul>
-        <li><a href="/District/test">District</a></li>
-        <li><a href="#Schools">Schools</a></li>
-        <li><a href="#Statewide">Statewide</a></li>
-      </ul>
-    </div>
+  <div class="header nav">
+    <span><a class="logo_text" href="/"> MN Schools COVID19 Data </a></span>
+    <span class = "headerNav">
+      <a href="/District/test"><button class="navButton">Use smart search</button></a>
+      <a href="/list/districts"><button class="navButton" >See all districts</button></a>
+      <a href="/list/schools"><button class="navButton">See all schools</button></a>
+    </span>
   </div>
-  <div class="Highlight">
+
+  <div class="Highlight" style="margin-bottom: 5em">
     <ul>
       <li>Data source: <a href="https://www.covidschooldatahub.com/for_researchers"> COVID-19 School Data Hub, School Learning Model Database </a></li>
       <li>Date downloaded - 04/05/2022</li>
     </ul>
   </div>
-  <h2>{{name}}</h2>
-  <div class="mainDataHeader">
-    <details>
-      <summary></summary>
-      <ul>
-        <h2>Enrollment: {{enrollment}} students</h2>
-        <h2>This {{charter}} school.</h2>
-        <div class="CovidData">
-          <details>
-            <summary>COVID Data</summary>
-            <ul>
-              <! inspired from this post https://stackoverflow.com/questions/1465249/get-lengths-of-a-list-in-a-jinja2-template>
-                {% for i in range(weeks|length) %}
-                <div class="Weekly">
-                  <details>
-                    <summary>Week {{i+1}}</summary>
-                    {% for data in weeks[i] %}
-                    <li>{{data}}</li>
-                    {% endfor %}
-                  </details>
-                </div>
-                {% endfor %}
-            </ul>
-    </details>
-    </ul>
+
+  <div class="block" style="text-align:center">
+    <h2 style="font-size:50px">{{name}}</h2>
+    <h2>Enrollment: {{enrollment}} students</h2>
+    <h2>This is a {{charter}} school.</h2>
   </div>
-  </details>
+
+  <div class="See CovidData" style="font-size:25px">
+     <details>
+        <summary>COVID Data</summary>
+        <ul>
+        <!-- Getting the week list -->
+        <!-- inspired from this post https://stackoverflow.com/questions/1465249/get-lengths-of-a-list-in-a-jinja2-template -->
+        {% for i in range(weeks|length) %}
+           <div class="Weekly">
+           <details>
+           <!-- And now returning the actual data -->
+           <summary>Week {{i+1}}</summary>
+           {% for data in weeks[i] %}
+             <li>{{data}}</li>
+           {% endfor %}
+           </details>
+         </div>
+         {% endfor %}
+         </ul>
+      </details>
+  </div>
+
+
 </body>
-  </html>
+</html>
