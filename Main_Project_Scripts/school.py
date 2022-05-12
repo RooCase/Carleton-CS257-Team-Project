@@ -63,7 +63,8 @@ School name: {self.name}\nThis is a {self.charter} school with a student body of
                 i = 0
                 row = []
                 while i < len(self.grades[grade]):
-                    row.append(f"Week {i} Grade {grade}: " + str(self.grades[grade][i]))
+                    number = grade.split("r")[1]
+                    row.append(f"Week {i} Grade {number}: " + str(self.grades[grade][i]))
                     i += 1
                 matrix.append(row)
         return matrix

@@ -107,7 +107,7 @@ def get_weekly_data(schools, schoolName):
     for i in range(0,len(values[0])):
         for val in values:
             weeks[i].append(val[i])
-        return weeks
+        return ""
 
 if __name__ == '__main__':
     schools, districts = setup()

@@ -88,7 +88,7 @@ def print_school_info(school_name):
     # adding spaces before capital letters
     actual_name = re.sub(r"(\w)([A-Z])", r"\1 \2", school_name)
     selected = find_object_by_name(importSchools(), actual_name)
-    covidData = get_weekly_data(schools, school_name)
+    covidData = selected.get_covid_data()
     return render_template('school.html',
                            name=selected.name,
                            charter=selected.charter,
@@ -111,8 +111,9 @@ def listSchools():
 
 @app.route('/list/districts')
 def listDisctricts():
-    schools, districts = setup()
-    return list_objects(districts)
+    schools, inputDistricts = setup()
+    return render_template('filter_districts.html',
+                           districts = inputDistricts)
 
 
 app.run(host='0.0.0.0', port=81)
