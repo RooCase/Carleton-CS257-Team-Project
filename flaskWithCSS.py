@@ -73,7 +73,7 @@ def render_district_info_by_name(district_name):
     schoolNameList =[]
     for school in selected.getSchoolList():
         schoolNameList.append(school.name)
-    covidData = get_weekly_data(districts, district_name)
+    covidData = selected.learning_modes_for_grades
     return render_template('district.html',
                            name=selected.getName(),
                            enrollment=selected.getSize(),
@@ -114,6 +114,10 @@ def listDisctricts():
     schools, inputDistricts = setup()
     return render_template('filter_districts.html',
                            districts = inputDistricts)
+
+@app.route("/search")
+def underConstruction():
+    return render_template('under_construction.html')
 
 
 app.run(host='0.0.0.0', port=81)

@@ -4,3 +4,5 @@ Team Members:
 * Artem Yushko
 * Rowan Hinrichs
 * Batmend Batsaikhan
+
+check "documentation" folder for more information and documentation on submissions
