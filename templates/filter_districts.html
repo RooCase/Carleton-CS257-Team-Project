@@ -1,0 +1,29 @@
+<html lang="en"> 
+    <head>
+        <title>See All Districts</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/universal.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+    </head>
+    
+    <body>
+        <div class="header">
+        <a href="/"> <h1>MN Districts COVID19 Data</h1> </a>
+      <div class = "headerNav">
+        <ul>
+          <a href="/District/test"><button class="navButton" Use our smart search</button></a>
+          <a href="/list/districts"><button class="navButton">See all districts</button></a>
+          <a href="/list/schools"><button class="navButton">See all schools</button></a>
+        </ul>
+      </div>
+    </div>
+
+        <article class="districts">
+          <ul>
+            {%for district in districts%}
+            <li><a href ="/districts/"+district.name)>{{ district.name }}</a></li>
+            {%endfor%}
+          </ul>
+        </article>
+      </section>
+    </body>
+</html>

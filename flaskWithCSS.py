@@ -73,43 +73,33 @@ def render_district_info_by_name(district_name):
     schoolNameList =[]
     for school in selected.getSchoolList():
         schoolNameList.append(school.name)
+    covidData = get_weekly_data(districts, district_name)
     return render_template('district.html',
                            name=selected.getName(),
                            enrollment=selected.getSize(),
                            schoolNames=schoolNameList,
-                           weeks=selected.getLearningModeWeekly()
+                           weeks=covidData
                            )
 
 
 @app.route('/school/<school_name>')
 def print_school_info(school_name):
+    schools, districts = setup()
     # adding spaces before capital letters
     actual_name = re.sub(r"(\w)([A-Z])", r"\1 \2", school_name)
     selected = find_object_by_name(importSchools(), actual_name)
-
+    covidData = get_weekly_data(schools, school_name)
     return render_template('school.html',
                            name=selected.name,
                            charter=selected.charter,
                            enrollment=selected.size,
-                           weeks=selected.grades
+                           weeks=covidData
                            )
 
 
 """
 Function for getting school-specific detailed covid data.
 """
-
-
-@app.route('/school/<school_name>/covid')
-def print_school_covid_data(school_name):
-    # adding spaces before capital letters
-    actual_name = re.sub(r"(\w)([A-Z])", r"\1 \2", school_name)
-    # converting pandas dataframe to JSON
-    df = get_weekly_data(importSchools(), actual_name)
-    df_list = df.values.tolist()
-    json_data = jsonify(df_list)
-    return json_data
-
 
 @app.route('/list/schools')
 def listSchools():

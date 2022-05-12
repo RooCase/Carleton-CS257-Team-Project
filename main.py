@@ -102,7 +102,12 @@ def get_weekly_data(schools, schoolName):
     :return: Weekly data of a school
     """
     resultSchool = find_object_by_name(schools, schoolName)
-    return resultSchool.get_covid_data().transpose()
+    values = resultSchool.get_covid_data().transpose().values.array
+    weeks = [[]]
+    for i in range(0,len(values[0])):
+        for val in values:
+            weeks[i].append(val[i])
+        return weeks
 
 if __name__ == '__main__':
     schools, districts = setup()
