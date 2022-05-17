@@ -11,7 +11,9 @@ Initializing the flask apps for later testing.
 For the sake of unified response format, we are using class-specific initializations.
 """
 list_app = flaskList.app
+list_app.testing = True
 school_app = flaskSchool.app
+school_app.testing = True
 
 class FlaskTest(unittest.TestCase):
     def setUp(self):
