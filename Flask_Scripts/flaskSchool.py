@@ -37,4 +37,5 @@ def print_school_covid_data(school_name):
     return json_data
 
 
-app.run(host='0.0.0.0', port=81)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=81)
