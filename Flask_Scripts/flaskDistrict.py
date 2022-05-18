@@ -1,3 +1,4 @@
+import main
 from Main_Project_Scripts import *
 from Main_Project_Scripts.Listing_Schools_in_a_District import *
 
@@ -11,6 +12,7 @@ def home():
 
 @app.route('/districtschools/<districtName>')
 def print_district_schools(districtName):
+    schools, districts = main.setup()
     return listSchools(schools, districtName)
 
 
