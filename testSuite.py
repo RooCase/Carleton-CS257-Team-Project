@@ -3,13 +3,50 @@ Testing the Flask functions.
 Written by Artem Yushko and Roo Case, amalgamed and tested by Artem Yushko
 """
 from Flask_Scripts import flaskList, flaskSchool
+from Main_Project_Scripts import school, district, csvManipulation
+from Main_Project_Scripts.csvManipulation import findIndividualGroups, createDistrict
 from main import list_objects, setup
 import unittest
 
-class FlaskTest(unittest.TestCase):
+class TestSuite(unittest.TestCase):
+    """
+    Test objects to make sure our functions work
+    """
+    sampleSchool = school.School("No", "DummyDistrict", "DummySchool", 69, [1, 2, 3, 4, 5])
+    sampleDistrict = district.District("DummyDistrict", 69, [sampleSchool], [1, 2, 3, 4, 5])
+
+    def test_get_district_info(self):
+        """
+        Tests if get_district_info in District class returns the correct string
+        :return: None
+        """
+        retrieved_district_data = self.sampleDistrict.get_district_data()
+        actual_district_data = "District name: DummyDistrict\nEnrollment for this district: 69\nList of schools:\n  " \
+                               "DummySchool\n"
+        self.assertEqual(retrieved_district_data, actual_district_data)
+
+    """
+    Tests for reading the CSV file. Written by Roo Case, modified by Artem Yushko
+    """
+    def writeAndRead(self, exampleString):
+        """
+        A helper function. Creates a CSV file and then reads from it using the CSV module,
+        to simulate what the application will be doing on a real dataset.
+        :param exampleString: the input into a csv file. It is assumed that the string is already comma-delimited.
+        :return: returns the list output from the CSV dataset.
+        """
+        with open("example.csv", 'w') as f:
+            f.write(exampleString)
+            f.close()
+
+        return csvManipulation.findLines("example.csv")
+
+    """
+    Testing the Flask functions
+    """
     def setUp(self):
         """
-        Setting everything up
+        Setting everything up for the flask tests
         """
         self.schools, self.districts = setup()
 
