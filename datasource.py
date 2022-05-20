@@ -52,17 +52,25 @@ class DataSource:
             return None
 
     def getDistrictNames(self):
+        """
+        A function to retrieve data from a SQL table on districts
+        :return: a list of district school names
+        """
         cursor = self.connection.cursor()
 
         # initializing a query
-        query = "SELECT * FROM districts"
+        query = "SELECT districtName FROM districts"
 
         # executing the query
         cursor.execute(query)
         print(cursor.fetchall())
 
     def getDistrictData(self, name):
-
+        """
+        Retrieves data from a specified district
+        :param name: provided name
+        :return: information about specific district
+        """
         cursor = self.connection.cursor()
 
         # initializing a query
