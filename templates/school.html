@@ -29,30 +29,36 @@ Written by Roo Case and Artem Yushko
   </div>
 
   <div class="block" style="text-align:center">
-    <h2 style="font-size:50px">{{name}}</h2>
-    <h2>Enrollment: {{enrollment}} students</h2>
-    <h2>This is a {{charter}} school.</h2>
+    <h2 style="font-size:50px">{{school[1]}}</h2>
+    <h2>Enrollment: {{school[4]}} students</h2>
+    <h2>District: {{school[3]}}</h2>
+    <h2>School Type: {{school[2]}}</h2>
+    <h2>Is it a charter school?: {{school[0]}}</h2>
   </div>
 
   <div class="See CovidData" style="font-size:25px">
-     <details>
-        <summary>COVID Data</summary>
-        <ul>
-        <!-- Getting the week list -->
-        <!-- inspired from this post https://stackoverflow.com/questions/1465249/get-lengths-of-a-list-in-a-jinja2-template -->
-        {% for i in range(weeks|length) %}
-           <div class="Weekly">
-           <details>
-           <!-- And now returning the actual data -->
-           <summary>Week {{i+1}}</summary>
-           {% for data in weeks[i] %}
-             <li>{{data}}</li>
-           {% endfor %}
-           </details>
-         </div>
-         {% endfor %}
-         </ul>
-      </details>
+    <table>
+      <tr>
+        <th>Time Period</th>
+        {% for i in available_grades %}
+          {% if i == 0 %}
+            <th>K</th>
+          {% else %} 
+            <th>Grade {{i}}</th>
+          {% endif %}
+        {% endfor %}
+      </tr>
+      
+      {% for week in weekly_table %}
+      <tr>
+        <td>{{week[1]}}</td>
+
+        {% for i in available_grades %}
+          <td>{{week[i+2]}}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
   </div>
 
 

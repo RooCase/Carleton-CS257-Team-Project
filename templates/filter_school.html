@@ -19,34 +19,34 @@
             <label for="enrollment">Enrollment</label>
             <select name="enrollment" id="enrollment">
               <option value="select">--Select--</option>
-              <option value="0-99">0-100</option>
-              <option value="100-999">100-1000</option>
+              <option value="0-99">0-99</option>
+              <option value="100-999">100-999</option>
               <option value="1000-inf">1000-Inf</option>
             </select>
     
             <label for="charter">Charter</label>
             <select name="charter" id="charter">
-              <option value="select">--Select--</option>
-              <option value="charter">Charter</option>
-              <option value="not charter">Regular</option>
+              <option value="'Yes', 'No'">--Select--</option>
+              <option value="'Yes'">Charter</option>
+              <option value="'No'">Regular</option>
             </select>
     
             <label for="grade">Grades</label>
             <select name="grade" id="grade">
               <option value="select">--Select--</option>
-              <option value="K">K</option>
-              <option value="Gr1">Grade 1</option>
-              <option value="Gr2">Grade 2</option>
-              <option value="Gr3">Grade 3</option>
-              <option value="Gr4">Grade 4</option>
-              <option value="Gr5">Grade 5</option>
-              <option value="Gr6">Grade 6</option>
-              <option value="Gr7">Grade 7</option>
-              <option value="Gr8">Grade 8</option>
-              <option value="Gr9">Grade 9</option>
-              <option value="Gr10">Grade 10</option>
-              <option value="Gr11">Grade 11</option>
-              <option value="Gr12">Grade 12</option>
+              <option value="0">K</option>
+              <option value="1">Grade 1</option>
+              <option value="2">Grade 2</option>
+              <option value="3">Grade 3</option>
+              <option value="4">Grade 4</option>
+              <option value="5">Grade 5</option>
+              <option value="6">Grade 6</option>
+              <option value="7">Grade 7</option>
+              <option value="8">Grade 8</option>
+              <option value="9">Grade 9</option>
+              <option value="10">Grade 10</option>
+              <option value="11">Grade 11</option>
+              <option value="12">Grade 12</option>
             </select>
             
             <input type="submit" value="Submit" />
@@ -56,7 +56,7 @@
         <article class="resulting_schools">
           <ul>
             {%for school in schools%}
-            <li><a href ="{{'/school/'+school.name}}">{{ school.name }}</a></li>
+            <li><a href ="{{'/school/'+school[1]}}">{{ school[1] }}</a></li>
             {%endfor%}
           </ul>
         </article>
