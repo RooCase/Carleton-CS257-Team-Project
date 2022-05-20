@@ -51,7 +51,31 @@ class DataSource:
             print("Something went wrong when executing the query: ", e)
             return None
 
+    def getDistrictNames(self):
+        cursor = self.connection.cursor()
+
+        # initializing a query
+        query = "SELECT * FROM districts"
+
+        # executing the query
+        cursor.execute(query)
+        print(cursor.fetchall())
+
+    def getDistrictData(self, name):
+
+        cursor = self.connection.cursor()
+
+        # initializing a query
+        query = "SELECT * FROM districts WHERE districtName=" + "'" +name+"'"
+
+        # executing the query
+        cursor.execute(query)
+        print(cursor.fetchall())
+
+
+
+
 if __name__ == '__main__':
     my_source = DataSource()
     my_source.connect()
-    my_source.getAllSchools()
+    my_source.getDistrictNames()

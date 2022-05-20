@@ -6,6 +6,7 @@ Most of the code here takes on the process of creating object instances.
 """
 
 import csv
+import psycopg2
 from Main_Project_Scripts.district import District
 from Main_Project_Scripts.school import School
 from Main_Project_Scripts.Listing_Schools_in_a_District import listSchools
