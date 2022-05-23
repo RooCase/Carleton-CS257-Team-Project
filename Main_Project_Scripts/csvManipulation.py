@@ -10,7 +10,6 @@ from Main_Project_Scripts.district import District
 from Main_Project_Scripts.school import School
 from Main_Project_Scripts.Listing_Schools_in_a_District import listSchools
 
-
 def findLines(file):
     """
     A function that gets each individual line from a source CSV file, and then returns each row in the CSV
