@@ -106,7 +106,10 @@ def listSchools():
     schools, districts = setup()
     enrollment, charter, grade = filter_school.get_request_args()
     return render_template('filter_school.html',
-                           schools=filter_school.filter_schools(schools, enrollment, charter, grade))
+                            schools=filter_school.filter_schools(schools, enrollment, charter, grade),
+                            enrollment = enrollment,
+                            charter=charter,
+                            grade = grade)
 
 
 @app.route('/list/districts')
