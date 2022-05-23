@@ -52,9 +52,6 @@ School name: {self.name}\nThis is a {self.charter} school with a student body of
 
     # getting weekly covid data from the school
     def get_covid_data(self):
-        # setting the row and column names
-        row_names = self.get_list_available_grades()
-        col_names = self.get_school_year()
         # creating the matrix as a file
         matrix = []
         # adding grades to the matrix
