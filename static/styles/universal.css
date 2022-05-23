@@ -101,27 +101,3 @@ background-color: blue;
   padding: 5px;
   background-color: #7393B3;
 }
-
-
-
-
-
-
-/*Buttons for header nav buttons*/
-.button {
-  background-color: #7393B3; /* Blue Gray */
-  border: none;
-  color: white;
-  /* Positioning the buttons in the right spots */
-  border-radius: 8px;
-  text-align: center;
-  text-decoration: shadow;
-  display: inline-block;
-  font-size: 30px;
-  margin: 23px 23px;
-  cursor: pointer;
-  /* Changing color when hovered over */
-  transition-duration: 0.2s;
-  width:30%
-}
-
