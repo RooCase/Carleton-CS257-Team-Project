@@ -119,5 +119,12 @@ def listDisctricts():
 def underConstruction():
     return render_template('under_construction.html')
 
+@app.errorhandler(500)
+@app.errorhandler(404)
+def error(e):
+    return render_template('error.html')
+
+
+
 
 app.run(host='0.0.0.0', port=81)
