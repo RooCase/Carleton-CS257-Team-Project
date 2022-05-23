@@ -42,11 +42,13 @@ class School(weekly_mode_tracker.WeeklyModeTracker):
         # printing out the school information
         if self.charter == "charter":
             info = f"""
-School name: {self.name}.\nThis is a {self.charter} school with a student body of {self.size} students.\nThese grades are available: {grds}
+School name: {self.name}.\nThis is a {self.charter} school with a student body of {self.size} students.\nThese grades 
+are available: {grds} 
 """
         else:
             info = f"""
-School name: {self.name}\nThis is a {self.charter} school with a student body of {self.size} students.\nIt is located in {self.district}.\nThese grades are available: {grds} 
+School name: {self.name}\nThis is a {self.charter} school with a student body of {self.size} students.\nIt is located 
+in {self.district}.\nThese grades are available: {grds} 
 """
         return info
 
