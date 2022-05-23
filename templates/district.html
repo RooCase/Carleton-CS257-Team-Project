@@ -21,40 +21,41 @@
       <li>Date downloaded - 04/05/2022</li>
     </ul>
   </div>
-  <h2>{{name}}</h2>
-  <div class="mainDataHeader">
-    <details>
-      <summary></summary>
-      <ul>
-        <h2>Enrollment: {{enrollment}} students</h2>
-        <details>
-          <div class="CovidData">
-          <summary>List of schools</summary>
-          <ul>
-            {% for name in schoolNames %}
-            <li>{{name}}</li>
-            {% endfor %}
-          </ul>
-        </div>
-        </details>
-        <div class="CovidData">
-          <details>
-            <summary>COVID Data</summary>
-            <ul>
-              <! inspired from this post https://stackoverflow.com/questions/1465249/get-lengths-of-a-list-in-a-jinja2-template>
-                {% for i in range(weeks|length) %}
-                <div class="Weekly">
-                  <details>
-                    <summary>Week {{i+1}}</summary>
-                    {% for data in weeks[i] %}
-                    <li>{{data}}</li>
-                    {% endfor %}
-                  </details>
-                </div>
-                {% endfor %}
-            </ul>
-    </details>
+  
+  <h2>{{district[0]}}</h2>
+  <h2>Enrollment: {{district[2]}} students</h2>
+  
+  <div>
+    <ul>
+      {% for school in schools %}
+        <li><a href ="{{'/school/'+school[1]}}">{{ school[1] }}</a></li>
+      {% endfor %}
     </ul>
+  </div>
+  
+  <div class="mainDataHeader">
+    <table>
+      <tr>
+        <th>Time Period</th>
+        {% for i in available_grades %}
+          {% if i == 0 %}
+            <th>K</th>
+          {% else %} 
+            <th>Grade {{i}}</th>
+          {% endif %}
+        {% endfor %}
+      </tr>
+      
+      {% for week in weekly_table %}
+      <tr>
+        <td>{{week[1]}}</td>
+
+        {% for i in available_grades %}
+          <td>{{week[i+2]}}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
   </div>
   </details>
 </body>

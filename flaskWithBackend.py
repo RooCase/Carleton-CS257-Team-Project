@@ -1,0 +1,89 @@
+"""
+This is our amalgamated flask application, combined from all the files in the "Flask Scripts" folder.
+You can look in there for information about individual authors.
+Amalgamation created and tested by Roo Case.
+"""
+
+import re
+from flask import Flask, render_template
+from interact_data import InteractDataSource
+
+app = Flask(__name__)
+
+@app.route('/')
+def homepage():
+    """
+    A good old homepage
+    """
+    return render_template("homepage.html")
+
+@app.route('/list/schools')
+def listSchools():
+    """
+    This fn lists, and filters all the districts
+    :param: NA
+    :return: NA
+    """
+    my_source = InteractDataSource()
+    schools = my_source.filter_schools()
+    return render_template('filter_school.html', schools=schools)
+
+@app.route('/list/districts')
+def listDisctricts():
+    """
+    This fn lists alll the districts
+    :param: NA
+    :return: NA
+    """
+    my_source = InteractDataSource()
+    district_names = my_source.get_district_names()
+    return render_template('filter_districts.html', district_names = district_names)
+
+@app.route('/school/<school_name>')
+def render_school_info_by_name(school_name):
+    """
+    This fn renders an info about school and its weekly covid data.
+    :param: Name of shool
+    :return: NA
+    """
+    my_source = InteractDataSource()
+    school = my_source.get_school_by_name(school_name)
+    (available_grades, weekly_table) = my_source.get_identity_by_name(school_name)
+    return render_template('school.html', 
+                            school = school, 
+                            available_grades = available_grades, 
+                            weekly_table = weekly_table)
+
+@app.route('/district/<district_name>')
+def render_district_info_by_name(district_name):
+    """
+    This fn renders an info about district. It includes the district's schools and its weekly covid data
+    :param: Name of a district. This parameter comes from the link the user types in the browser.
+    :return: Info about that district. "District Not Found" if there is no such district.
+    """
+    my_source = InteractDataSource()
+    district = my_source.get_district_by_name(district_name)
+    schools = my_source.get_schools_by_district(district_name)
+    (available_grades, weekly_table) = my_source.get_identity_by_name(district_name)
+    return render_template('district.html',
+                           district = district,
+                           available_grades=available_grades,
+                           weekly_table = weekly_table,
+                           schools = schools)
+
+@app.route("/search")
+def underConstruction():
+    return render_template('under_construction.html')
+
+@app.errorhandler(400)
+def page_not_found(e):
+    return render_template('400.html'), 400
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(405)
+def page_not_found(e):
+    return render_template('405.html'), 405
+app.run()

@@ -22,3 +22,6 @@ class TestSchoolFlask(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+return [item[0] for item in cursor.fetchallo()]

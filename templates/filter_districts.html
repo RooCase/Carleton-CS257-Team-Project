@@ -16,8 +16,8 @@
 
     <article class="districts container column_view">
       <ul>
-        {%for district in districts%}
-        <li><a href ="{{'/district/'+district.name}}")>{{ district.name }}</a></li>
+        {%for district in district_names%}
+        <li><a href ="{{'/district/'+district[0]}}")>{{ district[0] }}</a></li>
         {%endfor%}
       </ul>
     </article>
