@@ -18,6 +18,7 @@ def findLines(file):
     :param file: a csv file
     :return: a list of lists, where each "row" (internal list) represents one row of the source CSV file.
     """
+
     lines = []
     with open(file, 'r') as data:
         CSVReader = csv.reader(data)
