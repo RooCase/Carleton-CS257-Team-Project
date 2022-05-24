@@ -22,7 +22,7 @@ body {
     margin-right: 320px;
     border: 1px solid #000000;
     /* The shadow itself */
-    box-shadow: inset 0 0 0 1000px rgba(257,257,257,1);
+    box-shadow: inset 0 0 0 1000px rgba(257,257,257,0.7);
 
 }
 
