@@ -3,7 +3,6 @@ Initializing the School object and creating all the basic getters and setters fo
 Written by Artem Yushko.
 """
 from Main_Project_Scripts import weekly_mode_tracker
-import pandas as pd
 
 class School(weekly_mode_tracker.WeeklyModeTracker):
     def __init__(self, charter, district, name, size, grades):
