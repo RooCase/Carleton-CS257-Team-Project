@@ -3,8 +3,7 @@ Testing the Flask functions.
 Written by Artem Yushko and Roo Case, amalgamed and tested by Artem Yushko
 """
 from Flask_Scripts import flaskList, flaskSchool
-from Main_Project_Scripts import school, district, csvManipulation
-from Main_Project_Scripts.csvManipulation import findIndividualGroups, createDistrict
+from Main_Project_Scripts import school, district
 from main import list_objects, setup
 import unittest
 
@@ -24,22 +23,6 @@ class TestSuite(unittest.TestCase):
         actual_district_data = "District name: DummyDistrict\nEnrollment for this district: 69\nList of schools:\n  " \
                                "DummySchool\n"
         self.assertEqual(retrieved_district_data, actual_district_data)
-
-    """
-    Tests for reading the CSV file. Written by Roo Case, modified by Artem Yushko
-    """
-    def writeAndRead(self, exampleString):
-        """
-        A helper function. Creates a CSV file and then reads from it using the CSV module,
-        to simulate what the application will be doing on a real dataset.
-        :param exampleString: the input into a csv file. It is assumed that the string is already comma-delimited.
-        :return: returns the list output from the CSV dataset.
-        """
-        with open("example.csv", 'w') as f:
-            f.write(exampleString)
-            f.close()
-
-        return csvManipulation.findLines("example.csv")
 
     """
     Testing the Flask functions
