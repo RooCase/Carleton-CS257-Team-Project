@@ -3,6 +3,7 @@ Initializing the School object and creating all the basic getters and setters fo
 Written by Artem Yushko.
 """
 from Main_Project_Scripts import weekly_mode_tracker
+import pandas as pd
 
 class School(weekly_mode_tracker.WeeklyModeTracker):
     def __init__(self, charter, district, name, size, grades):
@@ -41,13 +42,11 @@ class School(weekly_mode_tracker.WeeklyModeTracker):
         # printing out the school information
         if self.charter == "charter":
             info = f"""
-School name: {self.name}.\nThis is a {self.charter} school with a student body of {self.size} students.\nThese grades 
-are available: {grds} 
+School name: {self.name}.\nThis is a {self.charter} school with a student body of {self.size} students.\nThese grades are available: {grds}
 """
         else:
             info = f"""
-School name: {self.name}\nThis is a {self.charter} school with a student body of {self.size} students.\nIt is located 
-in {self.district}.\nThese grades are available: {grds} 
+School name: {self.name}\nThis is a {self.charter} school with a student body of {self.size} students.\nIt is located in {self.district}.\nThese grades are available: {grds} 
 """
         return info
 

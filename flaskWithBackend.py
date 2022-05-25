@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route('/')
 def homepage():
     """
-    A good old homepage
+    Returns the homepage.
     """
     return render_template("homepage.html")
 
@@ -22,7 +22,7 @@ def listSchools():
     """
     This fn lists, and filters all the districts
     :param: NA
-    :return: NA
+    :return: A rendered flask template for all schools
     """
     my_source = InteractDataSource()
     schools = my_source.filter_schools()
@@ -33,7 +33,7 @@ def listDisctricts():
     """
     This fn lists alll the districts
     :param: NA
-    :return: NA
+    :return: a rendered flask template for districts.
     """
     my_source = InteractDataSource()
     district_names = my_source.get_district_names()
@@ -44,7 +44,7 @@ def render_school_info_by_name(school_name):
     """
     This fn renders an info about school and its weekly covid data.
     :param: Name of shool
-    :return: NA
+    :return: A rendered flask template, detailing information about the specified school.
     """
     my_source = InteractDataSource()
     school = my_source.get_school_by_name(school_name)
@@ -73,17 +73,32 @@ def render_district_info_by_name(district_name):
 
 @app.route("/search")
 def underConstruction():
+    """
+    :return: an "under construction" flask template
+    """
     return render_template('under_construction.html')
 
 @app.errorhandler(400)
 def page_not_found(e):
+    """
+    :param e: the details of the error.
+    :return: an "error 400" flask template
+    """
     return render_template('400.html'), 400
 
 @app.errorhandler(404)
 def page_not_found(e):
+    """
+    :param e: the details of the error.
+    :return: an "error 404" flask template
+    """
     return render_template('404.html'), 404
 
 @app.errorhandler(405)
 def page_not_found(e):
+    """
+    :param e: the details of the error.
+    :return: an "error 404" flask template
+    """
     return render_template('405.html'), 405
 app.run()
