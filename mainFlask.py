@@ -1,13 +1,12 @@
 """
 This is our amalgamated flask application, combined from all the files in the "Flask Scripts" folder.
 You can look in there for information about individual authors.
-Amalgamation created and tested by Roo Case.
+Amalgamation created and tested by Artem Yushko & Roo Case.
 """
 
 import re
 import werkzeug
 from flask import Flask, jsonify
-from Flask_Scripts import *
 from Main_Project_Scripts.Listing_Schools_in_a_District import listSchools
 from main import setup, get_weekly_data, importSchools, list_objects, find_school_info_by_name, \
     find_district_info_by_name
@@ -17,11 +16,18 @@ app = Flask(__name__)
 
 @app.errorhandler(werkzeug.exceptions.BadRequest)
 def handle_bad_request():
-    return 'Something went wrong on our side! Try another request.', 400
+    """
+    :return: an "error 400" message and next step instructions
+    """
+    return 'Something went wrong on our side! Please try to restart the flask application and follow the instructions ' \
+           'listed at the homepage.', 400
 
 
 @app.errorhandler(werkzeug.exceptions.NotFound)
 def handle_not_found():
+    """
+    :return: the usage instructions text.
+    """
     return """Most likely, you have entered an incorrect school name! 
     Remember: 
         - To access an individual school's information, use the url extension "/school/{school_name}"
@@ -36,11 +42,18 @@ def handle_not_found():
 
 @app.errorhandler(werkzeug.exceptions.MethodNotAllowed)
 def handle_method_not_allowed():
-    return "This method is not allowed!", 405
+    """
+    :return: an "error 405" message and next step instructions
+    """
+    return 'This method is not allowed! Please try to restart the flask application and follow the instructions ' \
+           'listed at the homepage.', 405
 
 
 @app.route('/')
 def homepage():
+    """
+    :return: the homepage text with the usage instruction.
+    """
     return \
         """Welcome! Here's a list of things you can do:
         - To access an individual school's information, use the url extension "/school/{school_name}"
@@ -55,6 +68,9 @@ def homepage():
 
 @app.route('/district/')
 def home():
+    """
+    :return: instructions for accessing a specific district.
+    """
     return \
     """
     - To access a list of districts, use the url extension "/list/districts
@@ -63,6 +79,10 @@ def home():
 
 @app.route('/district/<districtName>/schools')
 def print_district_schools(districtName):
+    """
+    :param districtName: name of a specific district.
+    :return: list of all the schools in that district.
+    """
     schools, district = setup()
     return listSchools(schools, districtName)
 
@@ -70,7 +90,8 @@ def print_district_schools(districtName):
 @app.route('/district/<district_name>')
 def render_district_info_by_name(district_name):
     """
-    This function is a modification of find_district_info_by_name function for Flask. Also, it calls setup so it might be a little slow.
+    This function is a modification of find_district_info_by_name function for Flask.
+    Also, it calls setup so it might be a little slow.
     :param: Name of a district. This parameter comes from the link the user types in the browser.
     :return: Info about that district. "District Not Found" if there is no such district.
     """
@@ -79,17 +100,21 @@ def render_district_info_by_name(district_name):
 
 @app.route('/school/<school_name>')
 def print_school_info(school_name):
+    """
+    :param school_name: name of a specific school
+    :return: that school as an object
+    """
     # adding spaces before capital letters
     actual_name = re.sub(r"(\w)([A-Z])", r"\1 \2", school_name)
     return find_school_info_by_name(importSchools(), actual_name)
 
-
-"""
-Function for getting school-specific detailed covid data.
-"""
-
 @app.route('/school/<school_name>/covid')
 def print_school_covid_data(school_name):
+    """
+    Function for getting school-specific detailed covid data.
+    :param school_name: name of a specific school
+    :return: its covid data in digestible format
+    """
     # adding spaces before capital letters
     actual_name = re.sub(r"(\w)([A-Z])", r"\1 \2", school_name)
     # converting pandas dataframe to JSON
@@ -100,11 +125,19 @@ def print_school_covid_data(school_name):
 
 @app.route('/list/schools')
 def listSchools():
+    """
+    Lists all the schools
+    :return: a rendered list of schools.
+    """
     schools, districts = setup()
     return list_objects(schools)
 
 @app.route('/list/districts')
 def listDisctricts():
+    """
+    Lists all the districts
+    :return: a rendered list of districts.
+    """
     schools, districts = setup()
     return list_objects(districts)
 
