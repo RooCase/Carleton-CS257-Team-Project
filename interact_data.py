@@ -31,7 +31,7 @@ class InteractDataSource:
         :return: available grades and weekly data as tuple
         """
         cursor = self.connection.cursor()
-        cursor.execute("SELECT * FROM weekly_modes WHERE object_name = %s", (name,))
+        cursor.execute("SELECT * FROM weekly_modes WHERE name = %s", (name,))
         records = cursor.fetchall()
         available_grades = self.get_available_grades(records[0])
         available_grades.remove(-1)

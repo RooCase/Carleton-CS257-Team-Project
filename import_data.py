@@ -36,21 +36,21 @@ class ImportDataSource():
         cursor.execute("""
             DROP TABLE IF EXISTS weekly_modes;
             CREATE TABLE  weekly_modes (
-                object_name varchar(255),
-                time_period varchar(255),
-                k varchar(255),
-                gr1 varchar(255),
-                gr2 varchar(255),
-                gr3 varchar(255),
-                gr4 varchar(255),
-                gr5 varchar(255),
-                gr6 varchar(255),
-                gr7 varchar(255),
-                gr8 varchar(255),
-                gr9 varchar(255),
-                gr10 varchar(255),
-                gr11 varchar(255),
-                gr12 varchar(255)
+                name varchar(255),
+                weekDates varchar(255),
+                kindergarten varchar(255),
+                grade1 varchar(255),
+                grade2 varchar(255),
+                grade3 varchar(255),
+                grade4 varchar(255),
+                grade5 varchar(255),
+                grade6 varchar(255),
+                grade7 varchar(255),
+                grade8 varchar(255),
+                grade9 varchar(255),
+                grade10 varchar(255),
+                grade11 varchar(255),
+                grade12 varchar(255)
             )
         """)
         self.help_import_weeks_from_line(reduce_for_weekly_school("Data/Minnesota_Schools_Modified.csv"))
@@ -117,7 +117,7 @@ class ImportDataSource():
         :return: available grades and weekly data as tuple
         """
         cursor = self.connection.cursor()
-        cursor.execute("SELECT * FROM weekly_modes WHERE object_name = %s", (name,))
+        cursor.execute("SELECT * FROM weekly_modes WHERE name = %s", (name,))
         records = cursor.fetchall()
         return records[0]
 
