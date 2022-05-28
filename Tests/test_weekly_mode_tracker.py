@@ -7,11 +7,17 @@ sys.path.append(os.path.join(os.path.dirname(sys.path[0]), "Main_Project_Scripts
 
 class TestWeeklyModeTracker(unittest.TestCase):
     
-    def test_weekly_mode_tracker(self):
-        dummy_weekly_mode_tracker = WeeklyModeTracker()
-        dummy_weekly_mode_tracker.add_week(['AllDistance', 'AllDistance', 'AllDistance', 'AllDistance', 'AllDistance', 'AllDistance', 'AllDistance', 'AllDistance', 'AllDistance', 'AllDistance10', 'AllDistance', 'AllDistance'])
-        assert(dummy_weekly_mode_tracker.get_weeks_for_grade(10), ['AllDistance'])
+    def test_weekly_mode_tracker_names_and_size(self):
+        dummy_weekly_mode_tracker = WeeklyModeTracker("Dummy", 123, None)
+        self.assertEqual(dummy_weekly_mode_tracker.name, "Dummy")
+        self.assertEqual(dummy_weekly_mode_tracker.size, 123)
+        self.assertEqual(dummy_weekly_mode_tracker.learning_modes_for_grades, None)
+
     def test_availible_grades(self):
+        """
+        Tests that inputted grades are properly handled.
+        :return: none, unit test.
+        """
         dummy_grade_data = {'1': [], '2': [], '3': [], '4': [], '5': [],
                             '6': ['AllDistance', 'AllDistance', 'AllDistance', 'AllDistance', 'AllDistance', 'AllDistance',
                                   'AllDistance', 'AllDistance', 'AllInPerson', 'AllInPerson'],
@@ -28,8 +34,8 @@ class TestWeeklyModeTracker(unittest.TestCase):
                             '12': ['AllDistance', 'AllDistance', 'AllDistance', 'AllDistance', 'AllInPerson', 'AllInPerson',
                                    'AllInPerson', 'AllInPerson', 'AllInPerson', 'AllInPerson']}
 
-        dummy_school = WeeklyModeTracker("Charter", "Dummy District", "Dummy Name", "1234", dummy_grade_data)
-        assert(dummy_school, ["6", "7", "8", "9", "10", "11", "12"])
+        dummy_school = WeeklyModeTracker("Dummy Name", "1234", dummy_grade_data)
+        self.assertEqual(dummy_school.learning_modes_for_grades, dummy_grade_data)
 if __name__ == '__main__':
     unittest.main()
 
