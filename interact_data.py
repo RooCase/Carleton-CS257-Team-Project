@@ -65,7 +65,7 @@ class InteractDataSource:
         """
         enrollment, charter, grade = self.get_request_args()
         cursor = self.connection.cursor()
-        cursor.execute(f"SELECT school_name FROM schools WHERE charter IN ({charter}) AND {grade} = any(available_grades) AND enrollment BETWEEN {enrollment} ORDER BY school_name ASC")
+        # cursor.execute(f"SELECT school_name FROM schools WHERE charter IN ({charter}) AND {grade} = any(available_grades) AND enrollment BETWEEN {enrollment} ORDER BY school_name ASC")
         records = cursor.fetchall()
         print(records[0])
         return records
