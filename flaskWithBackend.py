@@ -25,8 +25,12 @@ def listSchools():
     :return: A rendered flask template for all schools
     """
     my_source = InteractDataSource()
-    schools = my_source.filter_schools()
-    return render_template('filter_school.html', schools=schools)
+    enrollment, charter, grade, schools = my_source.filter_schools()
+    return render_template('filter_school.html', 
+                                schools=schools, 
+                                enrollment = enrollment,
+                                charter = charter, 
+                                grade = grade)    return render_template('filter_school.html', schools=schools)
 
 @app.route('/list/districts')
 def listDisctricts():
