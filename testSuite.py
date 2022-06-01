@@ -17,7 +17,6 @@ class TestSuite(unittest.TestCase):
     def test_get_district_info(self):
         """
         Tests if get_district_info in District class returns the correct string
-        :return: None
         """
         retrieved_district_data = self.sampleDistrict.get_district_data()
         actual_district_data = "District name: DummyDistrict\nEnrollment for this district: 69\nList of schools:\n  " \
