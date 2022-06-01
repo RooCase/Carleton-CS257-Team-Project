@@ -30,7 +30,8 @@ def listSchools():
                                 schools=schools, 
                                 enrollment = enrollment,
                                 charter = charter, 
-                                grade = grade)    return render_template('filter_school.html', schools=schools)
+                                grade = grade)
+
 
 @app.route('/list/districts')
 def listDisctricts():
